@@ -15,7 +15,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { showToast } from "@/helpers/showToast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -76,8 +76,8 @@ export default function Navbar() {
                 <DropdownMenu>
                     <DropdownMenuTrigger>
                         <Avatar>
-                            <AvatarImage src={user.user.avatar || "https://github.com/shadcn.png"} />
-                            {/* <AvatarFallback>CN</AvatarFallback> */}
+                            <AvatarImage src={user?.user?.avatar ? user.user.avatar : "https://github.com/shadcn.png"} />
+                            <AvatarFallback>PP</AvatarFallback>
                         </Avatar>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>

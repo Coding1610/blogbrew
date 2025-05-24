@@ -17,8 +17,8 @@ app.use(cors({
 })); // for different port communication
 
 // middleware for file upload
-const fileUpload = require('express-fileupload');
-app.use(fileUpload({useTempFiles:true}));
+// const fileUpload = require('express-fileupload');
+// app.use(fileUpload({useTempFiles:true}));
 
 // import routes and mounting
 const routes = require('./routes/routes');

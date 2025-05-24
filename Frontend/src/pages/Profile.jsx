@@ -30,14 +30,13 @@ export default function Profile() {
         userId ? {method:'get', credentials:'include'} : null
     );
 
-    // const dispatch = useDispatch();
-    // const navigate = useNavigate();
+    const dispatch = useDispatch();
     
     const formSchema = z.object({
         name: z.string().min(3,'Name must be atleast 3 character long'),
         email: z.string().email(),
         bio: z.string().min(5,'Bio must be atleast 5 character long'),    
-        password: z.string()
+        // password: z.string()
     });
 
     const form = useForm({
@@ -75,20 +74,15 @@ export default function Profile() {
                 body:formData
             });
 
-            console.log("Response : ", response);
-
             const data = await response.json();
-
-            console.log("Data : ", data);
 
             if(!response.ok){
                 showToast('Error', data.message || 'Unable to update Profile');
                 return;
             }
 
-            // dispatch(setUser(data.user));
-            // showToast('Success', data.message || "Profile Updated Successfully.");
-            // navigate(RouteIndex);
+            dispatch(setUser(data.user));
+            showToast('Success', data.message || "Profile Updated Successfully.");
 
         } catch(error){
             showToast('Error',error.message || 'Something Went Wrong.');
@@ -116,6 +110,7 @@ export default function Profile() {
                                 <input {...getInputProps()} />
                                 <Avatar className="w-20 h-20 relative group cursor-pointer">
                                     <AvatarImage src={filePreview? filePreview : userData?.user?.avatar || "https://github.com/shadcn.png" } />
+                                    <AvatarFallback>PP</AvatarFallback>
                                     <div className='absolute z-50 w-full h-full top-[40px] left-[40px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-black hidden justify-center items-center bg-opacity-60 border-[3.5px] border-darkRed group-hover:flex'>  
                                         <Camera size={32} className='text-darkRed'/>
                                     </div>
