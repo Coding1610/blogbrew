@@ -3,7 +3,7 @@ import { Card, CardHeader } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ShoppingCart } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { RouteAddCate, RouteDeleteCate, RouteEditCate } from '@/helpers/RouteName'
+import { RouteAddCate, RouteEditCate } from '@/helpers/RouteName'
 import { useFetch } from '@/hooks/useFtech'
 import {
     Table,

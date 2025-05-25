@@ -2,7 +2,7 @@ import React from 'react'
 import './index.css'
 import Layout from './layout/Layout'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { RouteIndex, RouteProfile, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteDeleteCate } from './helpers/RouteName'
+import { RouteIndex, RouteProfile, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate } from './helpers/RouteName'
 import Index from './pages/Index'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
@@ -10,7 +10,6 @@ import Profile from './pages/Profile'
 import CateDeatils from './pages/Categories/CateDeatils'
 import AddCate from './pages/Categories/AddCate'
 import EditCate from './pages/Categories/EditCate'
-
 
 export default function App() {
   return (
