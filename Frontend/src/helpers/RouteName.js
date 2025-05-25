@@ -12,12 +12,3 @@ export const RouteEditCate = (cate_id) => {
         return `/categories/edit/:cate_id`;
     }
 };
-
-export const RouteDeleteCate = (cate_id) => {
-    if(cate_id){
-        return `/categories/delete/${cate_id}`;
-    }
-    else{
-        return `/categories/delete/:cate_id`;
-    }
-};
