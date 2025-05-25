@@ -12,7 +12,7 @@ export default function Layout() {
         <Navbar/>
         <AppSidebar/>
         <main className='w-full'>
-            <div className='w-full min-h-[calc(100vh-35px)] flex justify-center items-center'>
+            <div className='w-full min-h-[calc(100vh-35px)] pt-[70px] flex justify-center items-center'>
                 <Outlet/>
             </div>
             <Footer/>

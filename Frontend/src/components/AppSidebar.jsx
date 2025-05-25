@@ -12,6 +12,7 @@ import {
   } from "@/components/ui/sidebar"
 import { Link } from 'react-router-dom'
 import { House, SquareStack, Users, MessageCircleMore, NotepadText, CircleDotDashed } from 'lucide-react'
+import { RouteCateDetails } from '@/helpers/RouteName'
 
 export default function AppSidebar() {
   return (
@@ -30,7 +31,7 @@ export default function AppSidebar() {
                             </SidebarMenuButton>
                             <SidebarMenuButton>
                                 <SquareStack className='text-darkRed'/>
-                                <Link to="/" className='font-semibold font-raleway'> Categories </Link>
+                                <Link to={RouteCateDetails} className='font-semibold font-raleway'> Categories </Link>
                             </SidebarMenuButton>
                             <SidebarMenuButton> 
                                 <NotepadText className='text-darkRed'/>
@@ -56,7 +57,7 @@ export default function AppSidebar() {
                         <SidebarMenuItem>
                             <SidebarMenuButton>
                                 <CircleDotDashed className='text-darkRed'/>
-                                <Link to="/" className='font-semibold font-raleway'> Category Item</Link>
+                                <Link to={'/'} className='font-semibold font-raleway'> Category Item</Link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
                     </SidebarMenu>

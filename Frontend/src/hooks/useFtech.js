@@ -12,7 +12,6 @@ export const useFetch = (url, options = {}, dependencies = []) => {
 
         const fetchData = async() => {
 
-
             try{
 
                 const response = await fetch(url, options);
@@ -21,7 +20,7 @@ export const useFetch = (url, options = {}, dependencies = []) => {
                 if(!response.ok){
                     throw new Error(`Error, ${response.statusText}, ${response.status}`);
                 }
-                setData(responseData);
+                setData(responseData.data || responseData);
                 setError(null);
 
             } catch (error) {

@@ -100,7 +100,7 @@ export default function Profile() {
   
     return (
     <>
-        <Card className="w-[600px] pt-12 pb-4 border-none shadow-none">
+        <Card className="w-[600px] pb-4 border-none shadow-none">
             <CardContent>
 
                 <div className='flex justify-center items-center mb-4'>
