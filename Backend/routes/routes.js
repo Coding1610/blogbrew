@@ -14,6 +14,11 @@ const {EditCategory} = require('../controllers/EditCategory');
 const {FetchCategory} = require('../controllers/FetchCategory');
 const {DeleteCategory} = require('../controllers/DeleteCategory');
 const {ShowAllCategory} = require('../controllers/ShowAllCategory');
+const {AddBlog} = require('../controllers/AddBlog');
+const {EditBlog} = require('../controllers/EditBlog');
+const {DeleteBlog} = require('../controllers/DeleteBlog');
+const {ShowAllBlogs} = require('../controllers/ShowAllBlogs');
+const {UpdateBlog} = require('../controllers/UpdateBlog');
 
 // create routes
 router.post('/register', Register);
@@ -27,5 +32,10 @@ router.put('/category/edit/:categoryId', EditCategory);
 router.get('/category/show/:categoryId', FetchCategory);
 router.delete('/category/delete/:categoryId', DeleteCategory);
 router.get('/category/show-all', ShowAllCategory);
+router.post('/blog/add', upload.single('file'), AddBlog);
+router.get('/blog/edit/:blogId', EditBlog);
+router.delete('/blog/delete/:blogId', DeleteBlog);
+router.get('/blog/show-all', ShowAllBlogs);
+router.put('/blog/update/:blogId',upload.single('file'), UpdateBlog);
 
 module.exports = router;

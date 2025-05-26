@@ -65,6 +65,7 @@ export default function AddCate() {
                 <CardContent className="mt-5">
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)}>
+                        <h1 className="font-roboto font-bold text-2xl text-darkRed mb-5 border-b-darkRed border-b-2 w-max">Add New Category</h1>
                         <div className='mb-3'>
                             <FormField
                                 control={form.control}

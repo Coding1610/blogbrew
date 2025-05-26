@@ -2,7 +2,6 @@ import React from 'react'
 import {
     Sidebar,
     SidebarContent,
-    SidebarFooter,
     SidebarGroup,
     SidebarGroupLabel,
     SidebarHeader,
@@ -12,7 +11,7 @@ import {
   } from "@/components/ui/sidebar"
 import { Link } from 'react-router-dom'
 import { House, SquareStack, Users, MessageCircleMore, NotepadText, CircleDotDashed } from 'lucide-react'
-import { RouteCateDetails } from '@/helpers/RouteName'
+import { RouteBlog, RouteCateDetails } from '@/helpers/RouteName'
 
 export default function AppSidebar() {
   return (
@@ -35,7 +34,7 @@ export default function AppSidebar() {
                             </SidebarMenuButton>
                             <SidebarMenuButton> 
                                 <NotepadText className='text-darkRed'/>
-                                <Link to="/" className='font-semibold font-raleway'> Blogs </Link>
+                                <Link to={RouteBlog} className='font-semibold font-raleway'> Blogs </Link>
                             </SidebarMenuButton>
                             <SidebarMenuButton>
                                 <MessageCircleMore className='text-darkRed'/>

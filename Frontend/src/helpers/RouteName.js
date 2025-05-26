@@ -12,3 +12,13 @@ export const RouteEditCate = (cate_id) => {
         return `/categories/edit/:cate_id`;
     }
 };
+export const RouteBlog = '/blog';
+export const RouteBlogAdd = '/blog/add';
+export const RouteBlogEdit = (blog_id) => {
+    if(blog_id){
+        return `/blog/edit/${blog_id}`;
+    }
+    else{
+        return `/blog/edit/:blog_id`;
+    }
+}

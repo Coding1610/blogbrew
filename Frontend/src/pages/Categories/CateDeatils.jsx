@@ -28,8 +28,6 @@ export default function CateDeatils() {
         credentials:'include'
     },[refreshData]);
 
-    if(loading) return <Loading/>
-
     const handleDelete = (id) => {
         const response = deleteData(`${getEnv('VITE_API_BASE_URL')}/category/delete/${id}`);
         if(response){
@@ -40,6 +38,8 @@ export default function CateDeatils() {
             showToast('Error','Error while deleting data');
         }
     };
+
+    if(loading) return <Loading/>
 
     return (
         <>

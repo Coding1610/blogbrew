@@ -1,5 +1,5 @@
 export const deleteData = async(endpoint) => {
-    const c = confirm('Are you sure to delete this category ?');
+    const c = confirm('Are you sure to delete this data ?');
     if(c){
         try{
             const response = await fetch(endpoint,{
