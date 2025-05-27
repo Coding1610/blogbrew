@@ -22,3 +22,11 @@ export const RouteBlogEdit = (blog_id) => {
         return `/blog/edit/:blog_id`;
     }
 }
+export const RouteBlogDetails = (category, blog) => {
+    if(!category || !blog){
+        return '/blog/:category/:blog';
+    }
+    else{
+        return `/blog/${category}/${blog}`;
+    }
+}

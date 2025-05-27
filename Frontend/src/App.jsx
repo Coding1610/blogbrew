@@ -15,9 +15,10 @@ import EditCate from './pages/Categories/EditCate'
 import AddBlog from './pages/Blog/AddBlog'
 import EditBlog from './pages/Blog/EditBlog'
 import BlogDeatils from './pages/Blog/BlogDeatils'
+import SingleBlogDetail from './pages/SingleBlogDetail'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteProfile, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate } from './helpers/RouteName'
+import { RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteProfile, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate } from './helpers/RouteName'
 
 export default function App() {
   return (
@@ -27,7 +28,7 @@ export default function App() {
             <Route path={RouteIndex} element={<Layout/>}>
 
               {/* Home Page Route */}
-              <Route element={<Index/>}/> {/* when you want to make any default page then set "index" to it*/}
+              <Route path={RouteIndex} element={<Index/>}/> {/* when you want to make any default page then set "index" to it*/}
               
               {/* User Profile Route */}
               <Route path={RouteProfile} element={<Profile/>}/>
@@ -41,7 +42,7 @@ export default function App() {
               <Route path={RouteBlog} element={<BlogDeatils/>}/>
               <Route path={RouteBlogAdd} element={<AddBlog/>}/>
               <Route path={RouteBlogEdit()} element={<EditBlog/>}/>
-
+              <Route path={RouteBlogDetails()} element={<SingleBlogDetail/>}/>
             </Route>
 
             {/* Authentication Routes */}

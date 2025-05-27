@@ -12,9 +12,20 @@ import {
 import { Link } from 'react-router-dom'
 import { House, SquareStack, Users, MessageCircleMore, NotepadText, CircleDotDashed } from 'lucide-react'
 import { RouteBlog, RouteCateDetails } from '@/helpers/RouteName'
+import { useFetch } from '@/hooks/useFtech'
+import { getEnv } from '@/helpers/getEnv'
+import Loading from './Loading'
 
 export default function AppSidebar() {
-  return (
+
+    const {data:categoryData, loading} = useFetch(`${getEnv('VITE_API_BASE_URL')}/category/show-all`, {
+        method:'get',
+        credentials:'include'
+    });
+
+    if(loading) return <Loading/>
+
+    return (
     <>
     <Sidebar>
       <SidebarHeader className="bg-white flex justify-center text-darkRed pl-5 pt-4">
@@ -49,16 +60,20 @@ export default function AppSidebar() {
                 </SidebarGroup>
                 
                 <SidebarGroup>
-                    <SidebarGroupLabel>
+                    <SidebarGroupLabel className="text-[15px]">
                         Categories
                     </SidebarGroupLabel>
                     <SidebarMenu>
-                        <SidebarMenuItem>
-                            <SidebarMenuButton>
-                                <CircleDotDashed className='text-darkRed'/>
-                                <Link to={'/'} className='font-semibold font-raleway'> Category Item</Link>
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
+                        {categoryData && categoryData.length > 0 && 
+                            categoryData.map(category => 
+                                <SidebarMenuItem key={category._id}>
+                                <SidebarMenuButton>
+                                    <CircleDotDashed className='text-darkRed'/>
+                                    <Link to={'/'} className='font-semibold font-raleway'>{category.name}</Link>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                            )
+                        }
                     </SidebarMenu>
                 </SidebarGroup>
             </SidebarContent>

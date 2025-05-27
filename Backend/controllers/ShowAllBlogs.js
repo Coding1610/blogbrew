@@ -4,7 +4,7 @@ const {handleError} = require('../helpers/handleError');
 exports.ShowAllBlogs = async(req,res,next) => {
 
     try {   
-        const blog = await Blog.find().populate('author','name').populate('category','name').sort({createdAt:-1}).lean().exec(); // -1 means latest at top
+        const blog = await Blog.find().populate('author','name avatar role').populate('category','name slug').sort({createdAt:-1}).lean().exec(); // -1 means latest at top
         if(!blog){
             return next(handleError(404, "Blogs not found."));
         }
