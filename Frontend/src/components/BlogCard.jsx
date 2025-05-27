@@ -25,12 +25,12 @@ export default function BlogCard({props}) {
                             <p>{props.author?.name}</p>
                         </div>
                         {props?.author?.role === 'Admin' ?
-                        <Badge className='ring-1 ring-midRed bg-gray-50 text-midRed hover:bg-gray-50 text-center'>
+                        <Badge className='ring-1 hover:ring-2 ring-midRed bg-gray-50 text-midRed hover:bg-gray-50 text-center'>
                             Admin
                         </Badge>                            
                         :
                         <>
-                        <Badge className='ring-1 hover:ring-2 ring-darkRed bg-gray-50 text-darkRed hover:bg-gray-50 text-center'>
+                        <Badge className='ring-1 hover:ring-2 ring-midRed bg-gray-50 text-midRed hover:bg-gray-50 text-center'>
                             User
                         </Badge>   
                         </>
