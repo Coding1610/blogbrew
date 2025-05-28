@@ -15,7 +15,7 @@ import EditCate from './pages/Categories/EditCate'
 import AddBlog from './pages/Blog/AddBlog'
 import EditBlog from './pages/Blog/EditBlog'
 import BlogDeatils from './pages/Blog/BlogDeatils'
-import SingleBlogDetail from './pages/SingleBlogDetail'
+import SingleBlogDetail from './pages/Blog/SingleBlogDetail'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteProfile, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate } from './helpers/RouteName'

@@ -20,6 +20,9 @@ const {DeleteBlog} = require('../controllers/DeleteBlog');
 const {ShowAllBlogs} = require('../controllers/ShowAllBlogs');
 const {UpdateBlog} = require('../controllers/UpdateBlog');
 const {GetBlogDetails} = require('../controllers/GetBlogDetails');
+const {AddComment} = require('../controllers/AddComment');
+const { GetComments } = require('../controllers/GetComments');
+const { CommentCount } = require('../controllers/CommentCount');
 
 // create routes
 router.post('/register', Register);
@@ -39,5 +42,8 @@ router.delete('/blog/delete/:blogId', DeleteBlog);
 router.get('/blog/show-all', ShowAllBlogs);
 router.put('/blog/update/:blogId',upload.single('file'), UpdateBlog);
 router.get('/blog/get-blog/:slug', GetBlogDetails);
+router.post('/blog/comment/add', AddComment);
+router.get('/blog/:blogId/comments', GetComments);
+router.get('/blog/:blogId/comments-count',CommentCount);
 
 module.exports = router;

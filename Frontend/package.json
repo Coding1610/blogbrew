@@ -35,6 +35,7 @@
     "react-dom": "^19.1.0",
     "react-dropzone": "^14.3.8",
     "react-hook-form": "^7.56.4",
+    "react-icons": "^5.5.0",
     "react-parallax-tilt": "^1.7.296",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.0",

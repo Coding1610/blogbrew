@@ -135,7 +135,7 @@ export default function AddBlog() {
                                 <FormItem>
                                     <FormLabel className="text-[15px]">Category</FormLabel>
                                     <Select className="w-full" onValueChange={field.onChange} defaultValue={field.value}>
-                                        <SelectTrigger className="h-10 rounded-lg bg-gray-50 font-normal ring-darkRed focus-visible:ring-darkRed focus:outline-none w-full">
+                                        <SelectTrigger className="h-10 rounded-lg bg-gray-50 font-normal focus-visible:ring-darkRed focus:outline-none w-full">
                                             <SelectValue placeholder="Select"/>
                                         </SelectTrigger>
                                         <SelectContent className='font-normal'>
