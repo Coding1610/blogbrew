@@ -18,7 +18,8 @@ import BlogDeatils from './pages/Blog/BlogDeatils'
 import SingleBlogDetail from './pages/Blog/SingleBlogDetail'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteProfile, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate } from './helpers/RouteName'
+import { RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteProfile, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteBlogByCategory } from './helpers/RouteName'
+import BlogByCategory from './components/BlogByCategory'
 
 export default function App() {
   return (
@@ -43,6 +44,7 @@ export default function App() {
               <Route path={RouteBlogAdd} element={<AddBlog/>}/>
               <Route path={RouteBlogEdit()} element={<EditBlog/>}/>
               <Route path={RouteBlogDetails()} element={<SingleBlogDetail/>}/>
+              <Route path={RouteBlogByCategory()} element={<BlogByCategory/>}/>
             </Route>
 
             {/* Authentication Routes */}

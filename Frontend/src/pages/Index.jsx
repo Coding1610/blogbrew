@@ -20,7 +20,7 @@ export default function Index() {
     <>
       <div className="w-full pl-5 pr-5 pb-5 sm:pl-20 sm:pr-20 font-roboto flex flex-wrap justify-center items-center gap-5 mt-5 sm:mt-12 mb-6">
         {blogData && blogData.blog.length > 0 ? (
-          blogData.blog.map((blog) => <BlogCard props={blog}/>)
+          blogData.blog.map((blog) => <BlogCard key={blog._id} props={blog}/>)
         ) : (
           <>
             <p>No Blogs Are Found</p>

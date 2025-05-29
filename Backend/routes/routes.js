@@ -26,6 +26,7 @@ const { CommentCount } = require('../controllers/CommentCount');
 const { AddLike } = require('../controllers/AddLike');
 const { LikeCount } = require('../controllers/LikeCount');
 const { GetRelatedBlog } = require('../controllers/GetRelatedBlog');
+const { GetBlogByCategory } = require('../controllers/GetBlogByCategory');
 
 // create routes
 router.post('/register', Register);
@@ -51,5 +52,6 @@ router.get('/blog/:blogId/comments-count',CommentCount);
 router.post('/blog/like/add', AddLike);
 router.get('/blog/:blogId/likes-count/:author', LikeCount);
 router.get('/related-blog/:category', GetRelatedBlog);
+router.get('/blog/get-blog-by-category/:category', GetBlogByCategory);
 
 module.exports = router;

@@ -11,7 +11,7 @@ import {
   } from "@/components/ui/sidebar"
 import { Link } from 'react-router-dom'
 import { House, SquareStack, Users, MessageCircleMore, NotepadText, CircleDotDashed } from 'lucide-react'
-import { RouteBlog, RouteCateDetails } from '@/helpers/RouteName'
+import { RouteBlog, RouteBlogByCategory, RouteCateDetails } from '@/helpers/RouteName'
 import { useFetch } from '@/hooks/useFtech'
 import { getEnv } from '@/helpers/getEnv'
 import Loading from './Loading'
@@ -69,7 +69,7 @@ export default function AppSidebar() {
                                 <SidebarMenuItem key={category._id}>
                                 <SidebarMenuButton>
                                     <CircleDotDashed className='text-darkRed'/>
-                                    <Link to={'/'} className='font-semibold font-raleway'>{category.name}</Link>
+                                    <Link to={RouteBlogByCategory(category.slug)} className='font-semibold font-raleway'>{category.name}</Link>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
                             )
