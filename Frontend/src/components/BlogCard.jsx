@@ -4,12 +4,14 @@ import { Badge } from './ui/badge';
 import { Avatar, AvatarImage } from '@radix-ui/react-avatar';
 import { CalendarArrowUp } from 'lucide-react';
 import moment from 'moment';
-import userIcon from '../assets/user.png';
+// import userIcon from '../assets/user.png';
 import ReactParallaxTilt from 'react-parallax-tilt';
 import { Link } from 'react-router-dom';
 import { RouteBlogDetails } from '@/helpers/RouteName';
 
 export default function BlogCard({props}) {
+
+    const username = props?.author?.name;
 
     return (
         <>  
@@ -20,7 +22,7 @@ export default function BlogCard({props}) {
                     <div className='flex items-center justify-between mb-5'>
                         <div className='flex justify-between items-center gap-3'>
                             <Avatar>
-                                <AvatarImage className='w-[50px] h-[50px] rounded-full' src={props.author?.avatar ? props.author.avatar : userIcon} />  
+                                <AvatarImage className='w-[50px] h-[50px] rounded-full' src={props.author?.avatar ? props.author.avatar : `https://api.dicebear.com/5.x/initials/svg?seed=${username}%20`} />  
                             </Avatar>
                             <p>{props.author?.name}</p>
                         </div>

@@ -27,7 +27,7 @@ export default function CommentList({props}) {
                 {commentData.comments.map(c => 
                 <div key={c._id} className='font-roboto flex flex-col mb-4'>
                     <div className='flex  items-center gap-3'>
-                        <img className='w-8 h-8 rounded-full' src={c?.author?.avatar ? c.author.avatar : "https://github.com/shadcn.png"}/>
+                        <img className='w-8 h-8 rounded-full' src={c?.author?.avatar ? c.author.avatar : `https://api.dicebear.com/5.x/initials/svg?seed=${c.author?.name}%20`}/>
                         <p className='font-medium'>{c?.author?.name ? c.author.name : blogbrew-user}</p>
                     </div>
                     <div className='ml-12 flex flex-wrap gap-2'>

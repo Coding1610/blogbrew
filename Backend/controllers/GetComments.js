@@ -15,7 +15,7 @@ exports.GetComments = async(req,res,next) => {
         )
 
     } catch (error) {
-        next(handleError(500, `Error occure while adding comment, ${error.message}`));
+        next(handleError(500, `Error occure while fetching comment, ${error.message}`));
     }
 
 };

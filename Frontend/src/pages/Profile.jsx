@@ -109,7 +109,7 @@ export default function Profile() {
                             <div {...getRootProps()}>
                                 <input {...getInputProps()} />
                                 <Avatar className="w-20 h-20 relative group cursor-pointer">
-                                    <AvatarImage src={filePreview? filePreview : userData?.user?.avatar || "https://github.com/shadcn.png" } />
+                                    <AvatarImage src={filePreview? filePreview : userData?.user?.avatar || `https://api.dicebear.com/5.x/initials/svg?seed=${userData?.user?.name}%20` } />
                                     <AvatarFallback>PP</AvatarFallback>
                                     <div className='absolute z-50 w-full h-full top-[40px] left-[40px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-black hidden justify-center items-center bg-opacity-60 border-[3.5px] border-darkRed group-hover:flex'>  
                                         <Camera size={32} className='text-darkRed'/>

@@ -10,6 +10,7 @@ import Comment from '@/components/Comment';
 import moment from 'moment';
 import { CalendarFold } from 'lucide-react';
 import CommentCount from '@/components/CommentCount';
+import LikeCount from '@/components/LikeCount';
 
 export default function SingleBlogDetail() {
 
@@ -34,7 +35,7 @@ export default function SingleBlogDetail() {
                 <div>
                     <div className='flex items-center gap-4 mb-5 bg-gray-50 px-4 py-2 rounded-lg w-max'>
                         <Avatar>
-                                <AvatarImage className='w-[40px] h-[40px] rounded-full' src={blogData.blog.author.avatar}/>
+                                <AvatarImage className='w-[40px] h-[40px] rounded-full' src={`https://api.dicebear.com/5.x/initials/svg?seed=${blogData?.blog?.author?.name}%20`}/>
                         </Avatar>
                         <div >
                             <p className='font-medium text-[17px]'>{blogData.blog.author.name}</p>
@@ -44,6 +45,7 @@ export default function SingleBlogDetail() {
                     <div className='flex flex-wrap w-full gap-3 mb-5'>
                         <h1 className='text-[25px] font-bold bg-darkRed text-white px-4 py-2 rounded-lg'>{blogData.blog.title}</h1>
                         <CommentCount props={{blogId:blogData?.blog?._id}} />
+                        <LikeCount props={{blogId:blogData?.blog?._id}}/>
                     </div>
                 </div>
                 <div className='mb-5'>

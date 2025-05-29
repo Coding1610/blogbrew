@@ -29,6 +29,8 @@ export default function Navbar() {
     const navigate = useNavigate();
     const user = useSelector((state) => state.user);
 
+    const username = user?.user?.name;
+
     const handleLogout = async () => {
         try{
             const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/logout`,{
@@ -76,7 +78,7 @@ export default function Navbar() {
                 <DropdownMenu>
                     <DropdownMenuTrigger>
                         <Avatar>
-                            <AvatarImage src={user?.user?.avatar ? user.user.avatar : "https://github.com/shadcn.png"} />
+                            <AvatarImage src={user?.user?.avatar ? user.user.avatar : `https://api.dicebear.com/5.x/initials/svg?seed=${username}%20`} />
                             <AvatarFallback>PP</AvatarFallback>
                         </Avatar>
                     </DropdownMenuTrigger>
