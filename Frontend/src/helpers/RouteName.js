@@ -38,3 +38,11 @@ export const RouteBlogByCategory = (category) => {
         return `/blog/${category}`;
     }
 }
+export const RouteSearch = (q) => {
+    if(q){
+        return `/blog-search?q=${q}`;
+    }
+    else{
+        return '/blog-search';
+    }
+}

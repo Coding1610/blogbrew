@@ -20,13 +20,13 @@ exports.GetBlogByCategory = async(req,res,next) => {
         res.set('Cache-Control', 'no-store');
         res.status(200).json({
             success:true,
-            message:"Related Blogs are Fteched Successfully",
+            message:"Category based Blogs are Fteched Successfully",
             blog,
             categoryData
         });
     
     } catch (error) {
-        next(handleError(500, `Error occure while fetching related Blogs, ${error.message}`));
+        next(handleError(500, `Error occure while fetching category based Blogs, ${error.message}`));
     }
 
 };
