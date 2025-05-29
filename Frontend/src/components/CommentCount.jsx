@@ -9,9 +9,7 @@ export default function CommentCount({props}) {
         method:'get',
         credentials:'include'
     });
-
-    console.log(count);
-
+    
     return (
         <>
         <div className='flex gap-4  font-roboto font-medium text-[21px]'>

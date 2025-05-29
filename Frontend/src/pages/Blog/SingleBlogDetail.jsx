@@ -11,6 +11,7 @@ import moment from 'moment';
 import { CalendarFold } from 'lucide-react';
 import CommentCount from '@/components/CommentCount';
 import LikeCount from '@/components/LikeCount';
+import RelatedBlog from '@/components/RelatedBlog';
 
 export default function SingleBlogDetail() {
 
@@ -19,7 +20,11 @@ export default function SingleBlogDetail() {
     const {data:blogData, loading, error} = useFetch(`${getEnv('VITE_API_BASE_URL')}/blog/get-blog/${blog}`, {
         method:'get',
         credentials:'include',
-    });
+    },[blog]);
+
+    const categoryid = blogData?.blog?.category?._id;
+    const categorySlug = blogData?.blog?.category.slug;
+    const blogid = blogData?.blog?._id;
 
     const htmlContent = marked.parse(decode(blogData?.blog?.blogContent || ""));
 
@@ -27,11 +32,11 @@ export default function SingleBlogDetail() {
 
     return (
         <>
-        <div className='w-full pl-5 pr-5 pb-5 sm:pl-10 sm:pr-10 font-roboto flex justify-between gap-12 mt-5 sm:mt-9'>
+        <div className='w-full pl-5 pr-5 pb-5 sm:pl-10 sm:pr-10 font-roboto flex flex-col lg:flex-row justify-between gap-12 mt-5 sm:mt-9'>
             {
             blogData && blogData.blog &&
             <>
-            <div className='rounded w-[100%]'>
+            <div className='rounded w-[100%] lg:max-w-[70%]'>
                 <div>
                     <div className='flex items-center gap-4 mb-5 bg-gray-50 px-4 py-2 rounded-lg w-max'>
                         <Avatar>
@@ -58,9 +63,9 @@ export default function SingleBlogDetail() {
             </div>
             </>
             }
-            {/* <div className='border-2 rounded md:w-[30%]'>
-
-            </div> */}
+            <div className='border-2 rounded-md max-w-max lg:min-w-[35%] h-max px-2 py-4'>
+                <RelatedBlog props={{category:categoryid,blog:blogid,cateSlug:categorySlug}}/>
+            </div>
         </div>
         </>
     )

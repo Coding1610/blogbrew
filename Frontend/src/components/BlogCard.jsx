@@ -4,7 +4,6 @@ import { Badge } from './ui/badge';
 import { Avatar, AvatarImage } from '@radix-ui/react-avatar';
 import { CalendarArrowUp } from 'lucide-react';
 import moment from 'moment';
-// import userIcon from '../assets/user.png';
 import ReactParallaxTilt from 'react-parallax-tilt';
 import { Link } from 'react-router-dom';
 import { RouteBlogDetails } from '@/helpers/RouteName';
