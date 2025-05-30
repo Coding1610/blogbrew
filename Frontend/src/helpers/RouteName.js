@@ -46,3 +46,4 @@ export const RouteSearch = (q) => {
         return '/blog-search';
     }
 }
+export const RouteGetComments = '/get-all-comments';

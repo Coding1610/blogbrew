@@ -40,7 +40,7 @@ export default function RelatedBlog({props}) {
             ) : (
                 <div className='cursor-not-allowed rounded-md p-2 shadow-md flex justify-center items-center text-red-600 gap-1 bg-gray-50 w-max mt-4'>
                     <TriangleAlert size={20} />
-                    <p className='font-medium'>No Related Blogs</p>
+                    <p className='font-medium'>no related blogs</p>
                 </div>
             )}
         </div>

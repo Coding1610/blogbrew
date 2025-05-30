@@ -45,7 +45,7 @@ export default function BlogDeatils() {
 
     return (
         <>
-        <div className='w-full pl-5 pr-5 pb-5 sm:pl-20 sm:pr-20 font-roboto'>
+        <div className='w-full pl-5 pr-5 pb-5 sm:pl-15 sm:pr-15 font-roboto'>
             <Card className='border-none shadow-none'>
                 <CardHeader>
                     <Button className="bg-darkRed hover:bg-midRed rounded-lg w-[130px] sm:w-[130px]">
@@ -58,7 +58,7 @@ export default function BlogDeatils() {
                 <Card className="mx-4 px-2 pt-2">
                     <Table>
                         <TableHeader className="text-darkRed">
-                            <TableRow>
+                            <TableRow className="text-nowrap">
                                 <TableHead className="text-darkRed text-[15px]">Author</TableHead>
                                 <TableHead className="text-darkRed text-[15px]">Category Name</TableHead>
                                 <TableHead className="text-darkRed text-[15px]">Title</TableHead>
@@ -72,18 +72,13 @@ export default function BlogDeatils() {
                             
                             blogData.blog.map(blog => 
                                 <>
-                                <TableRow key={blog?._id}>
+                                <TableRow key={blog?._id} className="text-nowrap">
                                     <TableCell>{blog?.author?.name}</TableCell>
                                     <TableCell>{blog?.category?.name}</TableCell>
                                     <TableCell>{blog?.title}</TableCell>
                                     <TableCell>{blog?.slug}</TableCell>
                                     <TableCell>{moment(blog?.createdAt).format('DD-MM-YYYY')}</TableCell>
                                     <TableCell className="flex gap-2 items-center">
-                                        <Button className="rounded-full px-2.5 bg-white border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
-                                            <Link to={'/'} >    
-                                                <Eye size={16}/>
-                                            </Link>
-                                        </Button>
                                         <Button className="rounded-full px-2.5 bg-white border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
                                             <Link to={RouteBlogEdit(blog._id)} >    
                                                 <FilePenLine size={16}/>

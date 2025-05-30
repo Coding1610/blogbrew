@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { LogIn, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import SearchBox from "./SearchBox";
-import { RouteSignIn } from "@/helpers/RouteName";
+import { RouteBlogAdd, RouteSignIn } from "@/helpers/RouteName";
 import { useSelector } from "react-redux";
 import { UserRound, LogOut, CircleFadingPlus } from "lucide-react";
 
@@ -95,7 +95,7 @@ export default function Navbar() {
                             </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem asChild>
-                            <Link to={'/'} className="font-roboto cursor-pointer">
+                            <Link to={RouteBlogAdd} className="font-roboto cursor-pointer">
                                <CircleFadingPlus size={32} className="text-darkRed" />
                                 Create Blog
                             </Link>

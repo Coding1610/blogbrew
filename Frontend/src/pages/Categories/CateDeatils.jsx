@@ -15,7 +15,7 @@ import {
   } from "@/components/ui/table"
 import { getEnv } from '@/helpers/getEnv'
 import Loading from '@/components/Loading'
-import { Ban, Trash, FilePenLine } from 'lucide-react'
+import { TriangleAlert, Trash, FilePenLine } from 'lucide-react'
 import { deleteData } from '@/helpers/handleDelete'
 import { showToast } from '@/helpers/showToast'
  
@@ -28,8 +28,8 @@ export default function CateDeatils() {
         credentials:'include'
     },[refreshData]);
 
-    const handleDelete = (id) => {
-        const response = deleteData(`${getEnv('VITE_API_BASE_URL')}/category/delete/${id}`);
+    const handleDelete = async (id) => {
+        const response = await deleteData(`${getEnv('VITE_API_BASE_URL')}/category/delete/${id}`);
         if(response){
             setRefreshData(!refreshData);
             showToast('Success','Category Deleted Successfully');
@@ -56,7 +56,7 @@ export default function CateDeatils() {
                 <Card className="mx-4 px-2 pt-2">
                     <Table>
                         <TableHeader className="text-darkRed">
-                            <TableRow>
+                            <TableRow className="bg-gray-50 text-nowrap">
                                 <TableHead className="text-darkRed text-[15px]">Category</TableHead>
                                 <TableHead className="text-darkRed text-[15px]">Slug</TableHead>
                                 <TableHead className="text-darkRed text-[15px]">Action</TableHead>
@@ -67,18 +67,18 @@ export default function CateDeatils() {
                             
                             categoryData.map(category => 
                                 <>
-                                <TableRow key={category._id}>
+                                <TableRow key={category._id} className="text-nowrap">
                                     <TableCell>{category.name}</TableCell>
                                     <TableCell>{category.slug}</TableCell>
                                     <TableCell className="flex gap-2 items-center">
-                                        <Button onClick={() => handleDelete(category._id)} className="rounded-full px-2.5 bg-white  border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
-                                            <Link>
-                                                <Trash size={16}/>
-                                            </Link>
-                                        </Button>
                                         <Button className="rounded-full px-2.5 bg-white border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
                                             <Link to={RouteEditCate(category._id)} >    
                                                 <FilePenLine size={16}/>
+                                            </Link>
+                                        </Button>
+                                        <Button onClick={() => handleDelete(category._id)} className="rounded-full px-2.5 bg-white  border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
+                                            <Link>
+                                                <Trash size={16}/>
                                             </Link>
                                         </Button>
                                     </TableCell>
@@ -89,7 +89,10 @@ export default function CateDeatils() {
                             <>
                                 <TableRow>
                                     <TableCell colSpan={3} className='text-center'>
-                                        <p className='flex justify-center mt-2 text-red-600 font-medium items-center gap-2'> <Ban size={18}/> No Category Found</p>
+                                        <div className='cursor-not-allowed rounded-md p-2 shadow-md flex justify-center items-center text-red-600 gap-1 bg-gray-50 w-max mt-4'>
+                                            <TriangleAlert size={20} />
+                                            <p className='font-medium'>categories are not found</p>
+                                        </div> 
                                     </TableCell>
                                 </TableRow>
                             </>

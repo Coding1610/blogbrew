@@ -28,6 +28,8 @@ const { LikeCount } = require('../controllers/LikeCount');
 const { GetRelatedBlog } = require('../controllers/GetRelatedBlog');
 const { GetBlogByCategory } = require('../controllers/GetBlogByCategory');
 const { Search } = require('../controllers/Search');
+const { GetAllComments } = require('../controllers/GetAllComments');
+const {DeleteComment} = require('../controllers/DeleteComment')
 
 // create routes
 router.post('/register', Register);
@@ -54,6 +56,8 @@ router.post('/blog/like/add', AddLike);
 router.get('/blog/:blogId/likes-count/:author', LikeCount);
 router.get('/related-blog/:category', GetRelatedBlog);
 router.get('/blog/get-blog-by-category/:category', GetBlogByCategory);
-router.get('/blog/search', Search)
+router.get('/blog/search', Search);
+router.get('/get-all-comments', GetAllComments);
+router.delete('/comment/delete/:commentId', DeleteComment);
 
 module.exports = router;
