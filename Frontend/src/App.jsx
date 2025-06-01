@@ -18,10 +18,11 @@ import BlogDeatils from './pages/Blog/BlogDeatils'
 import SingleBlogDetail from './pages/Blog/SingleBlogDetail'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteProfile, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteBlogByCategory, RouteSearch, RouteGetComments } from './helpers/RouteName'
+import { RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteProfile, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteBlogByCategory, RouteSearch, RouteGetComments, RouteGetAllUsers } from './helpers/RouteName'
 import BlogByCategory from './components/BlogByCategory'
 import SearchResult from './components/SearchResult'
 import GetComments from './pages/GetComments'
+import GetAllUsers from './pages/GetAllUsers'
 
 export default function App() {
   return (
@@ -50,6 +51,7 @@ export default function App() {
               <Route path={RouteSearch()} element={<SearchResult/>} />
 
               <Route path={RouteGetComments} element={<GetComments/>}/>
+              <Route path={RouteGetAllUsers} element={<GetAllUsers/>}/>
             </Route>
 
             {/* Authentication Routes */}

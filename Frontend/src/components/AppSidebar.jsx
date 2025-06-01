@@ -11,7 +11,7 @@ import {
   } from "@/components/ui/sidebar"
 import { Link } from 'react-router-dom'
 import { House, SquareStack, Users, MessageCircleMore, NotepadText, CircleDotDashed } from 'lucide-react'
-import { RouteBlog, RouteBlogByCategory, RouteCateDetails, RouteGetComments } from '@/helpers/RouteName'
+import { RouteBlog, RouteBlogByCategory, RouteCateDetails, RouteGetAllUsers, RouteGetComments } from '@/helpers/RouteName'
 import { useFetch } from '@/hooks/useFtech'
 import { getEnv } from '@/helpers/getEnv'
 import Loading from './Loading'
@@ -53,7 +53,7 @@ export default function AppSidebar() {
                             </SidebarMenuButton>
                             <SidebarMenuButton>
                                 <Users className='text-darkRed'/>
-                                <Link to="/" className='font-semibold font-raleway'> Users </Link>
+                                <Link to={RouteGetAllUsers} className='font-semibold font-raleway'> Users </Link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
                     </SidebarMenu>

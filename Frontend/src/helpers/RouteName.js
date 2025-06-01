@@ -47,3 +47,4 @@ export const RouteSearch = (q) => {
     }
 }
 export const RouteGetComments = '/get-all-comments';
+export const RouteGetAllUsers = "/get-all-users";

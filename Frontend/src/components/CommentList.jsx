@@ -9,8 +9,6 @@ export default function CommentList({props}) {
 
     const user = useSelector((state) => state.user);
 
-    // console.log(user?.user?.avatar);
-
     const {data:commentData, loading, error} = useFetch(`${getEnv('VITE_API_BASE_URL')}/blog/${props.bId}/comments`, {
         method:'get',
         credentials:'include',
