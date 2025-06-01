@@ -22,14 +22,13 @@ import { useDispatch } from "react-redux";
 import { removeUser } from "@/redux/User/slice";
 import { RouteIndex, RouteProfile } from "@/helpers/RouteName";
 import { getEnv } from "@/helpers/getEnv";
+import logo from '../assets/blogbrew_icon.svg'
 
 export default function Navbar() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state) => state.user);
-
-    const username = user?.user?.name;
 
     const handleLogout = async () => {
         try{
@@ -56,7 +55,8 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16 fixed w-full z-20 bg-white px-5 border-b">
             {/* logo */}
             <div>
-            <Link to={RouteIndex} className="font-roboto font-bold text-2xl text-darkRed">
+            <Link to={RouteIndex} className="flex items-center gap-2 font-roboto font-bold text-2xl text-darkRed">
+                <img src={logo} alt="website logo" className="w-8 h-8" />
                 BlogBrew
             </Link>
         </div>
@@ -78,7 +78,7 @@ export default function Navbar() {
                 <DropdownMenu>
                     <DropdownMenuTrigger>
                         <Avatar>
-                            <AvatarImage src={user?.user?.avatar ? user.user.avatar : `https://api.dicebear.com/5.x/initials/svg?seed=${username}%20`} />
+                            <AvatarImage src={user?.user?.avatar ? user.user.avatar : `https://api.dicebear.com/5.x/initials/svg?seed=${user?.user?.name}%20`} />
                             <AvatarFallback>PP</AvatarFallback>
                         </Avatar>
                     </DropdownMenuTrigger>

@@ -47,8 +47,8 @@ export default function Comment({props}) {
                 return showToast('Error', data.message || 'Something went wrong, please try again later.');
             }
             setNC(data?.newComment);
-            form.reset();
             showToast('Success', 'Comment Added Successfully.');
+            form.reset();
         } catch (error) {
             showToast('Error', error.message);
         }

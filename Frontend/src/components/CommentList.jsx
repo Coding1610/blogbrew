@@ -37,14 +37,14 @@ export default function CommentList({props}) {
                 </>
                 :
                 <>
-                <p className='mt-[-13px] mb-1 font-roboto text-gray-500'>no comments yet...</p>
+                {/* <p className='mt-[-13px] mb-1 font-roboto text-gray-500'>no comments yet...</p> */}
                 </>
                 }
             </>
             {props?.nC &&
             <div className='font-roboto flex flex-col mb-4'>
                 <div className='flex  items-center gap-3'>
-                    <img className='w-8 h-8 rounded-full' src={user?.user?.avatar ? user?.user?.avatar : "https://github.com/shadcn.png"}/>
+                    <img className='w-8 h-8 rounded-full' src={user?.user?.avatar ? user?.user?.avatar : `https://api.dicebear.com/5.x/initials/svg?seed=${user?.user?.name}%20`}/>
                     <p className='font-medium'>{user?.user?.name ? user?.user?.name : "blogbrew-user"}</p>
                 </div>
                 <div className='ml-12 flex flex-wrap gap-2'>

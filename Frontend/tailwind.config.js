@@ -25,9 +25,6 @@ export default {
   		},
   		colors: {
   			bgMain: '#EAEBD0',
-  			// lightRed: '#DA6C6C',
-  			// midRed: '#7965C1',
-  			// darkRed: '#483AA0',
 			midRed:'#3D90D7', 
 			darkRed:'#3A59D1',
 			background: 'hsl(var(--background))',
