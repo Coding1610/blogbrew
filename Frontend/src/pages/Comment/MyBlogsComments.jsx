@@ -17,68 +17,62 @@ import { Trash, TriangleAlert} from 'lucide-react'
 import { deleteData } from '@/helpers/handleDelete'
 import { showToast } from '@/helpers/showToast'
 import moment from 'moment'
-import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
+import { useSelector } from 'react-redux'
+import { RouteSignIn } from '@/helpers/RouteName'
  
-export default function GetAllUsers() {
+export default function MyBlogsComments() {
 
     const [refreshData, setRefreshData] = useState(false);
 
-    const {data:userData, loading, error} = useFetch(`${getEnv('VITE_API_BASE_URL')}/get-all-users`, {
+    const user = useSelector((state) => state.user);
+
+    const {data:commentData, loading, error} = useFetch(`${getEnv('VITE_API_BASE_URL')}/blog/commets-on-my-blogs/${user?.user?._id}`, {
         method:'get',
         credentials:'include'
     },[refreshData]);
-    
-    const usersArray = userData?.allUsers || [];
-
-    const users = [...usersArray].reverse();
 
     const handleDelete = async (id) => {
-        const response = await deleteData(`${getEnv('VITE_API_BASE_URL')}/user/delete/${id}`);
+        const response = await deleteData(`${getEnv('VITE_API_BASE_URL')}/comment/delete/${id}`);
         if(response){
             setRefreshData(!refreshData);
-            showToast('Success','User Deleted Successfully');
+            showToast('Success','Comment Deleted Successfully');
         }
         else{
-            showToast('Error','Error while deleting user');
+            showToast('Error','Error while deleting comment');
         }
     };
 
     if(loading) return <Loading/>
 
-    return (
+    if(user && user.isLoggedIn){
+  
+      return (
         <>
         <div className='w-full pl-5 pr-5 pb-5 sm:pl-10 sm:pr-10 font-roboto mt-5'>
-                <h1 className="font-roboto font-bold text-2xl text-darkRed mb-5 border-b-darkRed border-b-2 w-max ml-5">All Users</h1>
+                <h1 className="font-roboto font-bold text-2xl text-darkRed mb-5 border-b-darkRed border-b-2 w-max ml-5 text-wrap">Comments on your Blogs</h1>
                 <Card className='mx-4 px-2 pt-2'>
                     <Table>
                         <TableHeader className="text-darkRed">
                             <TableRow className="bg-gray-50 text-nowrap text-darkRed text-[15px]">
-                                <TableHead className="text-darkRed text-[15px]">Role</TableHead>
-                                <TableHead className="text-darkRed text-[15px]">Name</TableHead>
-                                <TableHead className="text-darkRed text-[15px]">Email</TableHead>
-                                <TableHead className="text-darkRed text-[15px]">Avatar</TableHead>
-                                <TableHead className="text-darkRed text-[15px]">Dated</TableHead>
+                                <TableHead className="text-darkRed text-[15px]">Blog</TableHead>
+                                <TableHead className="text-darkRed text-[15px]">Comment</TableHead>
+                                <TableHead className="text-darkRed text-[15px]">Comment By</TableHead>
+                                <TableHead className="text-darkRed text-[15px]">Date</TableHead>
                                 <TableHead className="text-darkRed text-[15px]">Action</TableHead>
-                                </TableRow>
+                            </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {userData && userData?.allUsers.length > 0 ?  
+                            {commentData && commentData?.comments.length > 0 ?  
                             
-                            users.map(u => 
+                            commentData?.comments.map(c => 
                                 <>
-                                <TableRow key={u?._id} className="text-nowrap">
-                                    <TableCell>{u?.role}</TableCell>
-                                    <TableCell>{u?.name}</TableCell>
-                                    <TableCell>{u?.email}</TableCell>
-                                    <TableCell>
-                                        <Avatar>
-                                            <AvatarImage className='w-8 h-8 rounded-full' src={u?.avatar ? u.avatar : `https://api.dicebear.com/5.x/initials/svg?seed=${u?.name}%20`} />
-                                            <AvatarFallback>PP</AvatarFallback>
-                                        </Avatar>
-                                    </TableCell>
-                                    <TableCell>{u?.createdAt ? moment(u?.createdAt).format('DD-MM-YYYY') : '_'}</TableCell>
+                                <TableRow key={c._id} className="text-nowrap">
+                                    <TableCell>{c?.blogId?.title}</TableCell>
+                                    <TableCell>{c?.comment}</TableCell>
+                                    <TableCell>{c?.author?.name}</TableCell>
+                                    <TableCell>{moment(c?.createdAt).format('DD-MM-YYYY')}</TableCell>
                                     <TableCell className="flex gap-2 items-center">
-                                        <Button onClick={() => handleDelete(u?._id)} className="rounded-full px-2.5 bg-white  border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
+                                        <Button onClick={() => handleDelete(c._id)} className="rounded-full px-2.5 bg-white  border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
                                             <Link>
                                                 <Trash size={16}/>
                                             </Link>
@@ -90,10 +84,10 @@ export default function GetAllUsers() {
                             :
                             <>
                                 <TableRow>
-                                    <TableCell colSpan={6}>
+                                    <TableCell colSpan={5}>
                                         <div className='cursor-not-allowed rounded-md p-2 shadow-md flex justify-center items-center text-red-600 gap-1 bg-gray-50 w-max mt-4'>
                                             <TriangleAlert size={20} />
-                                            <p className='font-medium'>users are not found</p>
+                                            <p className='font-medium'>no one has commented on your blog yet</p>
                                         </div>   
                                     </TableCell>
                                 </TableRow>
@@ -105,4 +99,9 @@ export default function GetAllUsers() {
         </div>
         </>
     )
+  }else{
+    return (
+      <p className='flex text-[18px] justify-center text-red-600 font-medium items-center gap-2'> <Link to={RouteSignIn} className='hover:border-b-2 border-red-600'>sign-in</Link>to see your blogs comments</p>
+    )
+  }
 }

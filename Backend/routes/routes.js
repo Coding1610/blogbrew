@@ -32,6 +32,9 @@ const { GetAllComments } = require('../controllers/GetAllComments');
 const {DeleteComment} = require('../controllers/DeleteComment');
 const { GetAllUsers } = require('../controllers/GetAllUsers');
 const { DeleteUser } = require('../controllers/DeleteUser');
+const {GetMyBlogs} = require('../controllers/GetMyBlogs');
+const {GetMyBlogsComments} = require('../controllers/GetMyBlogsComments');
+const { GetCommentsByMe } = require('../controllers/GetCommentsByMe');
 
 // create routes
 router.post('/register', Register);
@@ -63,5 +66,8 @@ router.get('/get-all-comments', GetAllComments);
 router.delete('/comment/delete/:commentId', DeleteComment);
 router.get('/get-all-users', GetAllUsers);
 router.delete('/user/delete/:id', DeleteUser);
+router.get('/blog/get-my-blogs/:id', GetMyBlogs);
+router.get('/blog/commets-on-my-blogs/:id', GetMyBlogsComments);
+router.get('/blog/comments-by-me/:id', GetCommentsByMe);
 
 module.exports = router;

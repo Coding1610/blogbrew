@@ -79,11 +79,6 @@ export default function BlogDeatils() {
                                     <TableCell>{blog?.slug}</TableCell>
                                     <TableCell>{moment(blog?.createdAt).format('DD-MM-YYYY')}</TableCell>
                                     <TableCell className="flex gap-2 items-center">
-                                        <Button className="rounded-full px-2.5 bg-white border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
-                                            <Link to={RouteBlogEdit(blog._id)} >    
-                                                <FilePenLine size={16}/>
-                                            </Link>
-                                        </Button>
                                         <Button onClick={ () => handleDelete(blog._id)} className="rounded-full px-2.5 bg-white  border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
                                             <Link>
                                                 <Trash size={16}/>

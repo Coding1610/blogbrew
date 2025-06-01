@@ -11,10 +11,11 @@ import {
   } from "@/components/ui/sidebar"
 import { Link } from 'react-router-dom'
 import { House, SquareStack, Users, MessageCircleMore, NotepadText, CircleDotDashed } from 'lucide-react'
-import { RouteBlog, RouteBlogByCategory, RouteCateDetails, RouteGetAllUsers, RouteGetComments } from '@/helpers/RouteName'
+import { RouteBlog, RouteBlogByCategory, RouteCateDetails, RouteCommentsByMe, RouteGetAllUsers, RouteGetComments, RouteGetMyBlogs, RouteMyBlogsComments } from '@/helpers/RouteName'
 import { useFetch } from '@/hooks/useFtech'
 import { getEnv } from '@/helpers/getEnv'
 import Loading from './Loading'
+import { MessageSquareHeart, MessageSquareShare, LibraryBig } from 'lucide-react'
 
 export default function AppSidebar() {
 
@@ -39,6 +40,22 @@ export default function AppSidebar() {
                                 <House className='text-darkRed'/>
                                 <Link to="/" className='font-semibold font-raleway'> Home </Link>
                             </SidebarMenuButton>
+
+                            <SidebarMenuButton>
+                                <LibraryBig className='text-darkRed'/>
+                                <Link to={RouteGetMyBlogs} className='font-semibold font-raleway'>My Blogs</Link>
+                            </SidebarMenuButton>
+
+                            <SidebarMenuButton>
+                                <MessageSquareHeart className='text-darkRed'/>
+                                <Link to={RouteMyBlogsComments} className='font-semibold font-raleway'>Blogs Comment</Link>
+                            </SidebarMenuButton>
+
+                            <SidebarMenuButton>
+                                <MessageSquareShare className='text-darkRed'/>
+                                <Link to={RouteCommentsByMe} className='font-semibold font-raleway'>Commets By Me</Link>
+                            </SidebarMenuButton>
+
                             <SidebarMenuButton>
                                 <SquareStack className='text-darkRed'/>
                                 <Link to={RouteCateDetails} className='font-semibold font-raleway'> Categories </Link>

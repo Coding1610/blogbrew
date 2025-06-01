@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
         required:true,
         trim:true
     }
-});
+},{timestamps:true});
 
 const User = mongoose.model('User', userSchema, 'users'); //(modelName, schemaName, collectionName)
 module.exports = User;

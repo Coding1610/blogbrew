@@ -26,6 +26,8 @@ export default function SingleBlogDetail() {
     const categorySlug = blogData?.blog?.category.slug;
     const blogid = blogData?.blog?._id;
 
+    console.log(blogData?.blog?.author?.name);
+
     const htmlContent = marked.parse(decode(blogData?.blog?.blogContent || ""));
 
     if(loading) return <Loading/>
@@ -40,7 +42,7 @@ export default function SingleBlogDetail() {
                 <div>
                     <div className='flex items-center gap-4 mb-5 bg-gray-50 px-4 py-2 rounded-lg w-max'>
                         <Avatar>
-                                <AvatarImage className='w-[40px] h-[40px] rounded-full' src={`https://api.dicebear.com/5.x/initials/svg?seed=${blogData?.blog?.author?.name}%20`}/>
+                                <AvatarImage className='w-[40px] h-[40px] rounded-full' src={blogData?.blog?.author?.avatar ? blogData?.blog?.author?.avatar : `https://api.dicebear.com/5.x/initials/svg?seed=${blogData?.blog?.author?.name}%20`}/>
                         </Avatar>
                         <div >
                             <p className='font-medium text-[17px]'>{blogData.blog.author.name}</p>
