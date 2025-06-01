@@ -12,6 +12,7 @@ import { CalendarFold } from 'lucide-react';
 import CommentCount from '@/components/CommentCount';
 import LikeCount from '@/components/LikeCount';
 import RelatedBlog from '@/components/RelatedBlog';
+import DOMPurify from 'dompurify'
 
 export default function SingleBlogDetail() {
 
@@ -28,7 +29,7 @@ export default function SingleBlogDetail() {
 
     console.log(blogData?.blog?.author?.name);
 
-    const htmlContent = marked.parse(decode(blogData?.blog?.blogContent || ""));
+    const htmlContent = DOMPurify.sanitize(marked.parse(decode(blogData?.blog?.blogContent || "")));
 
     if(loading) return <Loading/>
 
@@ -58,7 +59,7 @@ export default function SingleBlogDetail() {
                 <div className='mb-5'>
                     <img className='rounded-lg' src={blogData.blog.featureImage} alt="blog-cover-img" />
                 </div>
-                <div className='prose md:prose-lg max-w-none mb-10 sm:mb-14' dangerouslySetInnerHTML={{ __html: decode(htmlContent) }} />
+                <div className='prose md:prose-lg max-w-none mt-10 mb-10 sm:mb-14' dangerouslySetInnerHTML={{ __html: decode(htmlContent) }} />
                 <div>
                     <Comment props={{blogId:blogData?.blog?._id}} />
                 </div>

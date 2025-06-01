@@ -59,7 +59,6 @@ export default function AddBlog() {
 
     const handleEditorData = (event,editor) => {
         const data = editor.getData();
-        // .log(data);
         form.setValue('blogContent',data);
     };
 
