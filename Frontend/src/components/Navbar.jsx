@@ -55,9 +55,11 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16 fixed w-full z-20 bg-white px-5 border-b">
             {/* logo */}
             <div>
-            <Link to={RouteIndex} className="flex items-center gap-2 font-roboto font-bold text-2xl text-darkRed">
-                <img src={logo} alt="website logo" className="w-8 h-8" />
-                BlogBrew
+            <Link to={RouteIndex} className="flex items-center gap-3 font-roboto font-bold text-2xl text-darkRed">
+                <div>
+                    <img src={logo} className='w-9 h-9'/>
+                </div>
+                <p className="w-0 md:w-full md:block bg-gradient-to-r from-darkRed to-midRed text-transparent bg-clip-text">BlogBrew</p>
             </Link>
         </div>
         {/* search input */}

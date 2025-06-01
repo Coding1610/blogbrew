@@ -26,6 +26,8 @@ import GetAllUsers from './pages/GetAllUsers'
 import GetMyBlogs from './pages/Blog/GetMyBlogs'
 import MyBlogsComments from './pages/Comment/MyBlogsComments'
 import CommentsByMe from './pages/Comment/CommentsByMe'
+import ClientRouteProtection from './components/ClientRouteProtection.jsx'
+import AdminRouteProtection from './components/AdminRouteProtection'
 
 export default function App() {
   return (
@@ -37,34 +39,38 @@ export default function App() {
               {/* Home Page Route */}
               <Route path={RouteIndex} element={<Index/>}/> {/* when you want to make any default page then set "index" to it*/}
               
-              {/* User Profile Route */}
-              <Route path={RouteProfile} element={<Profile/>}/>
+              {/* Client Routes */}
+              <Route element={<ClientRouteProtection/>} >
+                <Route path={RouteProfile} element={<Profile/>}/>
+                <Route path={RouteGetMyBlogs} element={<GetMyBlogs/>} />
+                <Route path={RouteMyBlogsComments} element={<MyBlogsComments/>} />
+                <Route path={RouteCommentsByMe} element={<CommentsByMe/>} />
+                <Route path={RouteBlogAdd} element={<AddBlog/>}/>
+                <Route path={RouteBlogEdit()} element={<EditBlog/>}/>
+              </Route>
 
-              {/* Category Routes */}
-              <Route path={RouteAddCate} element={<AddCate/>}/>
-              <Route path={RouteCateDetails} element={<CateDeatils/>}/>
-              <Route path={RouteEditCate()} element={<EditCate/>}/>
+              {/* Admin Routes */}
+              <Route element={<AdminRouteProtection/>} >
+                <Route path={RouteProfile} element={<Profile/>}/>
+                <Route path={RouteCateDetails} element={<CateDeatils/>}/>
+                <Route path={RouteAddCate} element={<AddCate/>}/>
+                <Route path={RouteEditCate()} element={<EditCate/>}/>
+                <Route path={RouteBlog} element={<BlogDeatils/>}/>
+                <Route path={RouteGetComments} element={<GetComments/>}/>
+                <Route path={RouteGetAllUsers} element={<GetAllUsers/>}/>
+              </Route>
 
-              {/* Blog Routes */}
-              <Route path={RouteBlog} element={<BlogDeatils/>}/>
-              <Route path={RouteBlogAdd} element={<AddBlog/>}/>
-              <Route path={RouteBlogEdit()} element={<EditBlog/>}/>
+              {/* Public Routes */}
               <Route path={RouteBlogDetails()} element={<SingleBlogDetail/>}/>
               <Route path={RouteBlogByCategory()} element={<BlogByCategory/>}/>
               <Route path={RouteSearch()} element={<SearchResult/>} />
-
-              <Route path={RouteGetComments} element={<GetComments/>}/>
-              <Route path={RouteGetAllUsers} element={<GetAllUsers/>}/>
-
-              <Route path={RouteGetMyBlogs} element={<GetMyBlogs/>} />
-              <Route path={RouteMyBlogsComments} element={<MyBlogsComments/>} />
-              <Route path={RouteCommentsByMe} element={<CommentsByMe/>} />
 
             </Route>
 
             {/* Authentication Routes */}
             <Route path={RouteSignIn} element={<SignIn/>} />
             <Route path={RouteSignUp} element={<SignUp/>} />
+
         </Routes>
       </BrowserRouter>
     </>

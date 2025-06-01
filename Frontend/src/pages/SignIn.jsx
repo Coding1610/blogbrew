@@ -15,6 +15,7 @@ import { getEnv } from '@/helpers/getEnv'
 import GoogleAuth from '@/components/GoogleAuth'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../redux/User/slice'
+import logo from '../assets/blogbrew_icon.svg'
 
 export default function SignIn() {  
 
@@ -57,10 +58,13 @@ export default function SignIn() {
 
   return (
     <>
-        <div className='bg-white flex justify-center items-center w-screen h-screen'>
+        <div className='bg-white flex justify-center items-center w-screen h-screen font-roboto'>
             <Card className="w-[340px] md:w-[450px] p-6 pt-8 pb-8 ">
                 <div className='w-full flex flex-col gap-2 justify-center items-center mb-6'>
-                    <Link to={RouteIndex} className='font-roboto font-bold text-2xl text-darkRed'>BlogBrew</Link>
+                    <Link to={RouteIndex} className='font-roboto font-bold text-2xl flex justify-center items-center gap-3 mb-1'>
+                        <img src={logo} className='w-8 h-8'/>
+                        <p className="bg-gradient-to-r from-darkRed to-midRed text-transparent bg-clip-text">BlogBrew</p>
+                    </Link>
                     <h2 className='flex justify-center items-center text-xl font-roboto font-bold text-gray-700'>Login into your account</h2>
                 </div>
                 <Form {...form}>

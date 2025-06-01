@@ -20,8 +20,11 @@ import { Ban,Trash, Eye, FilePenLine } from 'lucide-react'
 import moment from 'moment'
 import { deleteData } from '@/helpers/handleDelete'
 import { showToast } from '@/helpers/showToast'
+import { useSelector } from 'react-redux'
 
-export default function BlogDeatils() {
+export default function BlogDeatils(){
+
+    const user = useSelector((state) => state.user);
 
     const [refreshData, setRefreshData] = useState(false);
 
@@ -48,12 +51,20 @@ export default function BlogDeatils() {
         <div className='w-full pl-5 pr-5 pb-5 sm:pl-15 sm:pr-15 font-roboto'>
             <Card className='border-none shadow-none'>
                 <CardHeader>
+                    {user?.user?.role === 'User' 
+                    ?
+                    <>
                     <Button className="bg-darkRed hover:bg-midRed rounded-lg w-[130px] sm:w-[130px]">
                         <Link to={RouteBlogAdd} className='font-roboto flex justify-center items-center gap-2'>
                             <Rss />
                             Add Blog
                         </Link>
                     </Button>
+                    </>
+                    :
+                    <>
+                    </>
+                    }
                 </CardHeader>
                 <Card className="mx-4 px-2 pt-2">
                     <Table>
