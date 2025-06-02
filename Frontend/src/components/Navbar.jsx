@@ -96,12 +96,20 @@ export default function Navbar() {
                                 Profile
                             </Link>
                         </DropdownMenuItem>
+                        {user && user.user.role === 'User' 
+                        ?
+                        <>
                         <DropdownMenuItem asChild>
                             <Link to={RouteBlogAdd} className="font-roboto cursor-pointer">
                                <CircleFadingPlus size={32} className="text-darkRed" />
                                 Create Blog
                             </Link>
                         </DropdownMenuItem>
+                        </>
+                        :
+                        <>
+                        </>
+                        }
                         <DropdownMenuSeparator/>
                         <DropdownMenuItem asChild>
                             <p onClick={handleLogout} className="font-roboto cursor-pointer">

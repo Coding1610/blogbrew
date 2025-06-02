@@ -101,6 +101,10 @@ export default function AppSidebar() {
                             ) : (
                             // Content when user is not logged in
                             <>
+                                <SidebarMenuButton>
+                                    <House className='text-darkRed'/>
+                                    <Link to="/" className='font-semibold font-raleway'> Home </Link>
+                                </SidebarMenuButton>
                             </>
                         )}
 
