@@ -18,7 +18,7 @@ import BlogDeatils from './pages/Blog/BlogDeatils'
 import SingleBlogDetail from './pages/Blog/SingleBlogDetail'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteProfile, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteBlogByCategory, RouteSearch, RouteGetComments, RouteGetAllUsers, RouteGetMyBlogs, RouteMyBlogsComments, RouteCommentsByMe } from './helpers/RouteName'
+import { RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteBlogByCategory, RouteSearch, RouteGetComments, RouteGetAllUsers, RouteGetMyBlogs, RouteMyBlogsComments, RouteCommentsByMe, RouteProfileUser, RouteProfileAdmin } from './helpers/RouteName'
 import BlogByCategory from './components/BlogByCategory'
 import SearchResult from './components/SearchResult'
 import GetComments from './pages/GetComments'
@@ -41,7 +41,7 @@ export default function App() {
               
               {/* Client Routes */}
               <Route element={<ClientRouteProtection/>} >
-                <Route path={RouteProfile} element={<Profile/>}/>
+                <Route path={RouteProfileUser} element={<Profile/>}/>
                 <Route path={RouteGetMyBlogs} element={<GetMyBlogs/>} />
                 <Route path={RouteMyBlogsComments} element={<MyBlogsComments/>} />
                 <Route path={RouteCommentsByMe} element={<CommentsByMe/>} />
@@ -51,7 +51,7 @@ export default function App() {
 
               {/* Admin Routes */}
               <Route element={<AdminRouteProtection/>} >
-                <Route path={RouteProfile} element={<Profile/>}/>
+                <Route path={RouteProfileAdmin} element={<Profile/>}/>
                 <Route path={RouteCateDetails} element={<CateDeatils/>}/>
                 <Route path={RouteAddCate} element={<AddCate/>}/>
                 <Route path={RouteEditCate()} element={<EditCate/>}/>

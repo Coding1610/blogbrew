@@ -34,11 +34,12 @@ exports.Login = async(req,res,next) => {
             _id:isEmail._id,
             name:isEmail.name,
             email:isEmail.email,
-            avatar:isEmail.avatar
+            avatar:isEmail.avatar,
+            role:isEmail.role,
         },process.env.JWT_SECRET_KEY);
 
         // create cookie
-        res.cookie('cookie-name', token , {
+        res.cookie('cookie_name', token , {
             httpOnly:true,
             secure:process.env.NODE_ENV === 'production',
             sameSite:process.env.NODE_ENV === 'production' ? 'none' : 'strict',

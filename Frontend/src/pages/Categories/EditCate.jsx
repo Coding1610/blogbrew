@@ -13,10 +13,14 @@ import slugify from 'slugify'
 import { useParams } from 'react-router-dom'
 import { useFetch } from '@/hooks/useFtech'
 import Loading from '@/components/Loading'
+import { RouteCateDetails } from '@/helpers/RouteName'
+import { useNavigate } from 'react-router-dom'
 
 export default function EditCate() {
 
     const {cate_id} = useParams();
+
+    const navigate = useNavigate();
 
     const {data:categoryData, loading, error} = useFetch(`${getEnv('VITE_API_BASE_URL')}/category/show/${cate_id}`,{
       method:'get',
@@ -45,6 +49,8 @@ export default function EditCate() {
             form.setValue('slug',slug);
         } 
     },[categoryName]);
+
+    console.log(categoryData);
     
     useEffect(() => {
       if(categoryData){
@@ -60,6 +66,7 @@ export default function EditCate() {
             const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/category/edit/${cate_id}`,{
                 method:'put',
                 headers:{'Content-type':'application/json'},
+                credentials:'include',
                 body:JSON.stringify(values)
             });
             const data = await response.json();
@@ -67,6 +74,7 @@ export default function EditCate() {
                 return showToast('Error', data.message || 'Something went wrong, please try again later.');
             }
             showToast('Success', 'Category Updated Successfully.');
+            navigate(RouteCateDetails);
         } catch (error) {
             showToast('Error', error.message);
         }

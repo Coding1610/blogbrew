@@ -40,6 +40,7 @@ export default function Comment({props}) {
             const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/blog/comment/add`,{
                 method:'post',
                 headers:{'Content-type':'application/json'},
+                credentials: 'include',
                 body:JSON.stringify(newValues)
             });
             const data = await response.json();
@@ -65,42 +66,77 @@ export default function Comment({props}) {
                 <CommentList props={{bId,nC}}/>
             </div>
 
+            {user ? (
+            user.user?.role === 'User' ? (
+                user.isLoggedIn ? (
+                <>
+                    <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)}>
+                        <div className="mb-3">
+                        <FormField
+                            control={form.control}
+                            name="comment"
+                            render={({ field }) => (
+                            <FormItem>
+                                <FormControl>
+                                <Textarea
+                                    {...field}
+                                    className="focus-visible:ring-darkRed focus:outline-none bg-gray-50 rounded-lg"
+                                    placeholder="Type your comment..."
+                                />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                        />
+                        </div>
+                        <Button
+                        type="submit"
+                        className="bg-darkRed hover:bg-midRed rounded-lg w-max flex justify-center items-center gap-2 mt-5"
+                        >
+                        <MessagesSquare />
+                        Add Comment
+                        </Button>
+                    </form>
+                    </Form>
+                </>
+                ) : (
+                <>
+                    {/* <Link to={RouteSignIn}>
+                        <p className="bg-gray-100 cursor-pointer p-1 hover:border-b-2 w-max border-black font-medium flex gap-1 text-[16px] items-center">
+                            <ArrowUpRight size={20} /> Sign in first
+                        </p>
+                    </Link> */}
+                </>
+                )
+            ) : (
+                <>
+                </>
+            )
+            ) : (
+            <>
+                {/* <Link to={RouteSignIn}>
+                <p className="bg-gray-100 cursor-pointer p-1 hover:border-b-2 w-max border-black font-medium flex gap-1 text-[16px] items-center">
+                    <ArrowUpRight size={20} /> Sign in first
+                </p>
+                </Link> */}
+            </>
+            )}
+
             {user && user.isLoggedIn 
                 ?
                 <>
-                <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
-                    <div className="mb-3">
-                    <FormField
-                        control={form.control}
-                        name="comment"
-                        render={({ field }) => (
-                        <FormItem>
-                            <FormControl>
-                                <Textarea {...field} className="focus-visible:ring-darkRed focus:outline-none bg-gray-50 rounded-lg" placeholder="type your comments..." />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                        )}
-                    />
-                    </div>
-                    <Button
-                    type="submit"
-                    className="bg-darkRed hover:bg-midRed rounded-lg w-max flex justify-center items-center gap-2 mt-5"
-                    >
-                        <MessagesSquare/>
-                        Add Comment
-                    </Button>
-                </form>
-                </Form>
                 </>
                 :
                 <>
                 <Link to={RouteSignIn}>
-                    <p className="bg-gray-100 cursor-pointer p-1 hover:border-b-2 w-max border-black font-medium flex gap-1 text-[16px] items-center"> <ArrowUpRight size={20}/> sign in first </p>
+                    <p className="bg-gray-100 p-2 rounded-md border-2  w-max font-medium flex gap-1 text-[16px] items-center">
+                        <ArrowUpRight size={20} /> <span className="cursor-pointer w-max hover:border-b-2 border-black">Sign in</span> first to add comment
+                    </p>
                 </Link>
                 </>
             }
+
         </div>
         </>
     );

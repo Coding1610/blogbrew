@@ -10,7 +10,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { getEnv } from '@/helpers/getEnv';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { Camera, Save } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { useFetch } from '@/hooks/useFtech';

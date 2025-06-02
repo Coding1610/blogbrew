@@ -1,7 +1,8 @@
 export const RouteIndex = '/';
 export const RouteSignIn = '/sign-in'
 export const RouteSignUp = '/sign-up'
-export const RouteProfile = '/profile'
+export const RouteProfileUser = '/user/profile'
+export const RouteProfileAdmin = '/admin/profile'
 export const RouteCateDetails = '/categories'
 export const RouteAddCate = '/categories/add'
 export const RouteEditCate = (cate_id) => {

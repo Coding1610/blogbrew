@@ -36,8 +36,8 @@ export default function GetMyBlogs() {
     const handleDelete = (id) => {
         const response = deleteData(`${getEnv('VITE_API_BASE_URL')}/blog/delete/${id}`);
         if(response){
-            setRefreshData(!refreshData);
             showToast('Success','Deleted Successfully');
+            setRefreshData(!refreshData);
         }
         else{
             showToast('Error','Error while deleting blog');

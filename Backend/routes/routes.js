@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const upload = require('../config/multer');
 
+// import middleware
+const {Authenticate} = require('../middlewares/Authenticate');
+const {AdminView} = require('../middlewares/AdminView');
+
 // import handler
 const {Register} = require('../controllers/Register');
 const {Login} = require('../controllers/Login');
@@ -35,39 +39,55 @@ const { DeleteUser } = require('../controllers/DeleteUser');
 const {GetMyBlogs} = require('../controllers/GetMyBlogs');
 const {GetMyBlogsComments} = require('../controllers/GetMyBlogsComments');
 const { GetCommentsByMe } = require('../controllers/GetCommentsByMe');
+const { GetLikeCount } = require('../controllers/GetLikeCount');
 
 // create routes
 router.post('/register', Register);
 router.post('/login', Login);
 router.post('/google-auth', GoogleAuth);
-router.get('/logout', Logout);
-router.get('/get-user/:userid', GetUser);
-router.put('/update-user/:userid', upload.single('file'), UpdateUser);
-router.post('/category/add', AddCategory);
-router.put('/category/edit/:categoryId', EditCategory);
-router.get('/category/show/:categoryId', FetchCategory);
-router.delete('/category/delete/:categoryId', DeleteCategory);
+router.get('/logout', Authenticate, Logout);
+
+// Authentication Route
+router.get('/get-user/:userid', Authenticate, GetUser);
+router.put('/update-user/:userid', Authenticate, upload.single('file'), UpdateUser);
+router.get('/get-all-users', Authenticate, GetAllUsers);
+router.delete('/user/delete/:id', Authenticate, DeleteUser);
+
+// Category Routes
+router.post('/category/add', AdminView, AddCategory);
+router.put('/category/edit/:categoryId', AdminView, EditCategory);
+router.get('/category/show/:categoryId', AdminView, FetchCategory);
+router.delete('/category/delete/:categoryId', AdminView, DeleteCategory);
 router.get('/category/show-all', ShowAllCategory);
-router.post('/blog/add', upload.single('file'), AddBlog);
-router.get('/blog/edit/:blogId', EditBlog);
-router.delete('/blog/delete/:blogId', DeleteBlog);
-router.get('/blog/show-all', ShowAllBlogs);
-router.put('/blog/update/:blogId',upload.single('file'), UpdateBlog);
+
+// Blog Routes
+router.post('/blog/add', Authenticate, upload.single('file'), AddBlog);
+router.get('/blog/edit/:blogId', Authenticate, EditBlog);
+router.put('/blog/update/:blogId', Authenticate, upload.single('file'), UpdateBlog);
+router.delete('/blog/delete/:blogId', Authenticate, DeleteBlog);
+router.get('/blog/show-all', Authenticate, ShowAllBlogs);
 router.get('/blog/get-blog/:slug', GetBlogDetails);
-router.post('/blog/comment/add', AddComment);
-router.get('/blog/:blogId/comments', GetComments);
-router.get('/blog/:blogId/comments-count',CommentCount);
-router.post('/blog/like/add', AddLike);
-router.get('/blog/:blogId/likes-count/:author', LikeCount);
 router.get('/related-blog/:category', GetRelatedBlog);
 router.get('/blog/get-blog-by-category/:category', GetBlogByCategory);
+
+// Search Route
 router.get('/blog/search', Search);
-router.get('/get-all-comments', GetAllComments);
-router.delete('/comment/delete/:commentId', DeleteComment);
-router.get('/get-all-users', GetAllUsers);
-router.delete('/user/delete/:id', DeleteUser);
-router.get('/blog/get-my-blogs/:id', GetMyBlogs);
-router.get('/blog/commets-on-my-blogs/:id', GetMyBlogsComments);
-router.get('/blog/comments-by-me/:id', GetCommentsByMe);
+
+// Like Routes
+router.post('/blog/like/add', Authenticate, AddLike);
+router.get('/blog/:blogId/likes-count/:author', LikeCount);
+router.get('/blog/likes/:blogId', GetLikeCount);
+
+// Comments Route
+router.post('/blog/comment/add', Authenticate, AddComment);
+router.get('/blog/:blogId/comments', GetComments);
+router.get('/blog/:blogId/comments-count', CommentCount);
+router.get('/get-all-comments', Authenticate, GetAllComments);
+router.delete('/comment/delete/:commentId', Authenticate, DeleteComment);
+
+// Client Blog Routes
+router.get('/blog/get-my-blogs/:id', Authenticate, GetMyBlogs);
+router.get('/blog/commets-on-my-blogs/:id', Authenticate, GetMyBlogsComments);
+router.get('/blog/comments-by-me/:id', Authenticate, GetCommentsByMe);
 
 module.exports = router;

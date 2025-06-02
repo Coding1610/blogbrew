@@ -11,12 +11,13 @@ import {
   } from "@/components/ui/sidebar"
 import { Link } from 'react-router-dom'
 import { House, SquareStack, Users, MessageCircleMore, NotepadText, CircleDotDashed, CirclePlus } from 'lucide-react'
-import { RouteBlog, RouteBlogAdd, RouteBlogByCategory, RouteCateDetails, RouteCommentsByMe, RouteGetAllUsers, RouteGetComments, RouteGetMyBlogs, RouteMyBlogsComments } from '@/helpers/RouteName'
+import { RouteIndex, RouteBlog, RouteBlogAdd, RouteBlogByCategory, RouteCateDetails, RouteCommentsByMe, RouteGetAllUsers, RouteGetComments, RouteGetMyBlogs, RouteMyBlogsComments } from '@/helpers/RouteName'
 import { useFetch } from '@/hooks/useFtech'
 import { getEnv } from '@/helpers/getEnv'
 import Loading from './Loading'
 import { MessageSquareHeart, MessageSquareShare, LibraryBig } from 'lucide-react'
 import { useSelector } from 'react-redux'
+import logo from '../assets/blogbrew_icon.svg'
 
 export default function AppSidebar() {
 
@@ -33,7 +34,12 @@ export default function AppSidebar() {
     <>
     <Sidebar>
       <SidebarHeader className="bg-white flex justify-center text-darkRed pl-5 pt-4">
-        <h2 className='font-roboto font-bold text-2xl'>BlogBrew</h2>
+            <Link to={RouteIndex} className="flex items-center gap-3 font-roboto font-bold text-2xl text-darkRed">
+                <div>
+                    <img src={logo} className='w-8 h-8'/>
+                </div>
+                <p className="bg-gradient-to-r from-darkRed to-midRed text-transparent bg-clip-text">BlogBrew</p>
+            </Link>
       </SidebarHeader>
             <SidebarContent className="bg-white">
                 <SidebarGroup className="pt-5">

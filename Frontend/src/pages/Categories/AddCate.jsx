@@ -14,8 +14,6 @@ import slugify from 'slugify'
 
 export default function AddCate() {
 
-    // const navigate = useNavigate();
-
     const formSchema = z.object({
         name: z.string().min(3, 'Name must be atleast 3 character long.'),
         slug: z.string().min(3, 'Slug must be atleast 3 character long.'),     
@@ -45,6 +43,7 @@ export default function AddCate() {
             const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/category/add`,{
                 method:'post',
                 headers:{'Content-type':'application/json'},
+                credentials:'include',
                 body:JSON.stringify(values)
             });
             const data = await response.json();

@@ -27,8 +27,6 @@ export default function SingleBlogDetail() {
     const categorySlug = blogData?.blog?.category.slug;
     const blogid = blogData?.blog?._id;
 
-    console.log(blogData?.blog?.author?.name);
-
     const htmlContent = DOMPurify.sanitize(marked.parse(decode(blogData?.blog?.blogContent || "")));
 
     if(loading) return <Loading/>
@@ -66,7 +64,7 @@ export default function SingleBlogDetail() {
             </div>
             </>
             }
-            <div className='border-2 rounded-md max-w-max lg:min-w-[35%] h-max px-2 py-4'>
+            <div className='border-2 rounded-md max-w-full lg:min-w-[35%] h-max px-2 py-4'>
                 <RelatedBlog props={{category:categoryid,blog:blogid,cateSlug:categorySlug}}/>
             </div>
         </div>

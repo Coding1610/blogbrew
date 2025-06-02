@@ -25,7 +25,7 @@ import {
 import { useSelector } from 'react-redux'
 import Loading from '@/components/Loading'
 import { useNavigate,useParams } from 'react-router-dom'
-import { RouteBlog } from '@/helpers/RouteName'
+import { RouteGetMyBlogs } from '@/helpers/RouteName'
 
 export default function EditBlog() {
 
@@ -121,7 +121,7 @@ export default function EditBlog() {
             setFile()
             setFilePreview();
             showToast('Success', data.message || "Your Blog Updated Successfully.");
-            navigate(RouteBlog);
+            navigate(RouteGetMyBlogs);
 
         } catch(error){
             showToast('Error',error.message || 'Something Went Wrong.');

@@ -1,9 +1,9 @@
 import React from "react";
 import { Button } from "./ui/button";
-import { LogIn, User } from "lucide-react";
+import { LogIn } from "lucide-react";
 import { Link } from "react-router-dom";
 import SearchBox from "./SearchBox";
-import { RouteBlogAdd, RouteSignIn } from "@/helpers/RouteName";
+import { RouteIndex, RouteBlogAdd, RouteProfileAdmin, RouteProfileUser, RouteSignIn } from "@/helpers/RouteName";
 import { useSelector } from "react-redux";
 import { UserRound, LogOut, CircleFadingPlus } from "lucide-react";
 
@@ -20,15 +20,18 @@ import { showToast } from "@/helpers/showToast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { removeUser } from "@/redux/User/slice";
-import { RouteIndex, RouteProfile } from "@/helpers/RouteName";
 import { getEnv } from "@/helpers/getEnv";
-import logo from '../assets/blogbrew_icon.svg'
+import logo from '../assets/blogbrew_icon.svg';
+import { PanelsTopLeft } from "lucide-react";
+import { useSidebar } from "./ui/sidebar";
 
 export default function Navbar() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state) => state.user);
+
+    const {toggleSidebar} = useSidebar();
 
     const handleLogout = async () => {
         try{
@@ -54,16 +57,17 @@ export default function Navbar() {
     <>
         <div className="flex justify-between items-center h-16 fixed w-full z-20 bg-white px-5 border-b">
             {/* logo */}
-            <div>
-            <Link to={RouteIndex} className="flex items-center gap-3 font-roboto font-bold text-2xl text-darkRed">
-                <div>
-                    <img src={logo} className='w-9 h-9'/>
-                </div>
-                <p className="w-0 md:w-full md:block bg-gradient-to-r from-darkRed to-midRed text-transparent bg-clip-text">BlogBrew</p>
-            </Link>
-        </div>
+            <div className="flex justify-center items-center gap-2">
+                <PanelsTopLeft onClick={toggleSidebar} size={24} className="text-darkRed cursor-pointer md:hidden block"/>
+                <Link to={RouteIndex} className="flex items-center gap-3 font-roboto font-bold text-2xl text-darkRed">
+                    <div className="border-l-4 border-gray-200 pl-2 md:pl-0 md:border-none">
+                        <img src={logo} className='w-8 h-8'/>
+                    </div>
+                    <p className="w-0 md:w-full md:block bg-gradient-to-r from-darkRed to-midRed text-transparent bg-clip-text">BlogBrew</p>
+                </Link>
+            </div>
         {/* search input */}
-        <div className="w-[130px] sm:w-[330px] md:w-[500px]">
+        <div className="w-[130px] sm:w-[330px] md:w-[400px]">
             <SearchBox />
         </div>
         {/* sign in button */}
@@ -91,10 +95,18 @@ export default function Navbar() {
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem asChild>
-                            <Link to={RouteProfile} className="font-roboto cursor-pointer">
-                               <UserRound size={32} className="text-darkRed" />
-                                Profile
-                            </Link>
+                            {user && user?.user?.role === 'User' 
+                                ?
+                                <Link to={RouteProfileUser} className="font-roboto cursor-pointer">
+                                    <UserRound size={32} className="text-darkRed" />
+                                    Profile
+                                </Link>
+                                :
+                                <Link to={RouteProfileAdmin} className="font-roboto cursor-pointer">
+                                    <UserRound size={32} className="text-darkRed" />
+                                    Profile
+                                </Link>
+                            }
                         </DropdownMenuItem>
                         {user && user.user.role === 'User' 
                         ?
