@@ -84,7 +84,7 @@ export default function Navbar() {
                 <DropdownMenu>
                     <DropdownMenuTrigger>
                         <Avatar>
-                            <AvatarImage src={user?.user?.avatar ? user.user.avatar : `https://api.dicebear.com/5.x/initials/svg?seed=${user?.user?.name}%20`} />
+                            <AvatarImage src={user?.user?.avatar ? user?.user?.avatar : `https://api.dicebear.com/5.x/initials/svg?seed=${user?.user?.name}%20`} />
                             <AvatarFallback>PP</AvatarFallback>
                         </Avatar>
                     </DropdownMenuTrigger>

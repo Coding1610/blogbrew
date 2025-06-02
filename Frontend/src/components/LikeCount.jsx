@@ -87,14 +87,9 @@ export default function LikeCount({props}) {
                 :
                 (
                     <>
-                    <div onClick={handleLike} className='gap-1 text-red-600 flex items-center justify-center'>
-                    {hasLiked 
-                        ?
-                        <GoHeartFill className='text-red-600 w-5 h-5 cursor-pointer'/>
-                        :
-                        <GoHeart className='text-red-600 w-5 h-5 cursor-pointer'/>
-                    }
-                    <p>{TotalLikes}</p>
+                    <div className='gap-1 text-red-600 flex items-center justify-center'>
+                        <GoHeartFill className='text-red-600 w-5 h-5'/>
+                        <p>{TotalLikes}</p>
                     </div>
                     </>
                 )

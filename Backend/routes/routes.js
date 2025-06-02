@@ -65,7 +65,7 @@ router.post('/blog/add', Authenticate, upload.single('file'), AddBlog);
 router.get('/blog/edit/:blogId', Authenticate, EditBlog);
 router.put('/blog/update/:blogId', Authenticate, upload.single('file'), UpdateBlog);
 router.delete('/blog/delete/:blogId', Authenticate, DeleteBlog);
-router.get('/blog/show-all', Authenticate, ShowAllBlogs);
+router.get('/blog/show-all', ShowAllBlogs);
 router.get('/blog/get-blog/:slug', GetBlogDetails);
 router.get('/related-blog/:category', GetRelatedBlog);
 router.get('/blog/get-blog-by-category/:category', GetBlogByCategory);
