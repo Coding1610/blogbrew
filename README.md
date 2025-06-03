@@ -2,10 +2,6 @@
 
 **BlogBrew** is a modern, full-stack blogging platform built with the MERN stack. It allows users to create, manage, and interact with blogs while offering an admin panel for content moderation and category management. The site is fully responsive and features rich text editing, real-time interactions, and role-based access control.
 
-## 🌐 Live Demo
-
-[🔗 Visit BlogBrew (Deployed Link)](https://your-deployment-link.com) <!-- Replace with actual deployed link -->
-
 ---
 
 ## 📌 Features
