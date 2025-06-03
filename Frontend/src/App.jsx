@@ -18,7 +18,7 @@ import BlogDeatils from './pages/Blog/BlogDeatils'
 import SingleBlogDetail from './pages/Blog/SingleBlogDetail'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteBlogByCategory, RouteSearch, RouteGetComments, RouteGetAllUsers, RouteGetMyBlogs, RouteMyBlogsComments, RouteCommentsByMe, RouteProfileUser, RouteProfileAdmin } from './helpers/RouteName'
+import { RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteBlogByCategory, RouteSearch, RouteGetComments, RouteGetAllUsers, RouteGetMyBlogs, RouteMyBlogsComments, RouteCommentsByMe, RouteProfileUser, RouteProfileAdmin, RouteNotFound } from './helpers/RouteName'
 import BlogByCategory from './components/BlogByCategory'
 import SearchResult from './components/SearchResult'
 import GetComments from './pages/GetComments'
@@ -28,6 +28,7 @@ import MyBlogsComments from './pages/Comment/MyBlogsComments'
 import CommentsByMe from './pages/Comment/CommentsByMe'
 import ClientRouteProtection from './components/ClientRouteProtection.jsx'
 import AdminRouteProtection from './components/AdminRouteProtection'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   return (
@@ -70,6 +71,9 @@ export default function App() {
             {/* Authentication Routes */}
             <Route path={RouteSignIn} element={<SignIn/>} />
             <Route path={RouteSignUp} element={<SignUp/>} />
+
+            {/* 404 Not Found Page */}
+            <Route path={RouteNotFound} element={<NotFound/>} />
 
         </Routes>
       </BrowserRouter>

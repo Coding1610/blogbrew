@@ -54,3 +54,6 @@ export const RouteGetAllUsers = "/get-all-users";
 export const RouteGetMyBlogs = '/blog/my-blogs';
 export const RouteMyBlogsComments = '/comment/my-blogs-comments';
 export const RouteCommentsByMe = '/comment/comments-by-me';
+
+// 404 Not Found
+export const RouteNotFound = '*';
