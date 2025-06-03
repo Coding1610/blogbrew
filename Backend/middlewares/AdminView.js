@@ -7,8 +7,6 @@ exports.AdminView = async(req,res,next) => {
     try {       
         const token = req.cookies.cookie_name;
 
-        console.log("Token", token);
-
         if(!token){
             return next(handleError(403,'Unathorized'));
         }
@@ -16,9 +14,7 @@ exports.AdminView = async(req,res,next) => {
         const decodeToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
         const id = '683ddcab38b40c2443197390';
-
-        console.log(decodeToken.role);
-       
+        
         const freshUser = await User.findById(id);
         
         if(freshUser.role !== decodeToken.role) {
