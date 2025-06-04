@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-react": "^9.5.0",
+    "@emoji-mart/data": "^1.2.1",
     "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-dialog": "^1.1.14",
@@ -26,6 +27,7 @@
     "clsx": "^2.1.1",
     "dompurify": "^3.2.6",
     "emoji-mart": "^5.6.0",
+    "emoji-picker-react": "^4.12.2",
     "entities": "^6.0.0",
     "firebase": "^11.8.1",
     "he": "^1.2.0",

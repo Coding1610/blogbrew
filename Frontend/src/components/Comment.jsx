@@ -13,11 +13,13 @@ import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { RouteSignIn } from "@/helpers/RouteName";
 import CommentList from '@/components/CommentList';
+import ShowEmojiPicker from "./ShowEmojiPicker";
 
 export default function Comment({props}) {
 
     const [nC,setNC] = useState();
-    
+    const [showPicker, setShowPicker] = useState(false);
+
     const user = useSelector((state) => state.user);
 
     const formSchema = z.object({
@@ -73,22 +75,41 @@ export default function Comment({props}) {
                     <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)}>
                         <div className="mb-3">
-                        <FormField
+                            <FormField
                             control={form.control}
                             name="comment"
                             render={({ field }) => (
-                            <FormItem>
+                                <FormItem className="relative">
+                                    
+                                    {showPicker && (
+                                        <ShowEmojiPicker
+                                        onEmojiClick={(emoji) => {
+                                                const currentValue = form.getValues("comment");
+                                                form.setValue("comment", currentValue + emoji);
+                                            }}
+                                        />
+                                    )}
+
                                 <FormControl>
-                                <Textarea
-                                    {...field}
-                                    className="focus-visible:ring-darkRed focus:outline-none bg-gray-50 rounded-lg"
-                                    placeholder="Type your comment..."
-                                />
+                                    <div className="relative">
+                                    <Textarea
+                                        {...field}
+                                        className="focus-visible:ring-darkRed focus:outline-none bg-gray-50 rounded-lg pr-10"
+                                        placeholder="Type your comment..."
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPicker(!showPicker)}
+                                        className="absolute right-2 bottom-2 text-xl"
+                                    >
+                                        😃
+                                    </button>
+                                    </div>
                                 </FormControl>
                                 <FormMessage />
-                            </FormItem>
+                                </FormItem>
                             )}
-                        />
+                            />
                         </div>
                         <Button
                         type="submit"
