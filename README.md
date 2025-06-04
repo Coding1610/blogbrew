@@ -72,3 +72,10 @@
 - 📬 Firebase-powered Google Authentication
 
 ---
+
+## 🧑‍💼Dummy User
+
+- email : premal45@gmail.com
+- password : plokijuh45
+
+---
