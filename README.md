@@ -75,7 +75,7 @@
 
 ## 🧑‍💼Dummy User
 
-- email : premalpatel45@gmail.com
+- email : premal45@gmail.com
 - password : plokijuh45
 
 ---
