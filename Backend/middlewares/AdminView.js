@@ -13,7 +13,7 @@ exports.AdminView = async(req,res,next) => {
 
         const decodeToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-        const id = '683ddcab38b40c2443197390';
+        const id = '6840307fe1e6bda03982137f';
         
         const freshUser = await User.findById(id);
         
