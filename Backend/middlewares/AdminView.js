@@ -13,12 +13,8 @@ exports.AdminView = async(req,res,next) => {
 
         const decodeToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-        const id = '6840307fe1e6bda03982137f';
-        
-        const freshUser = await User.findById(id);
-        
-        if(freshUser.role !== decodeToken.role) {
-            decodeToken.role = freshUser.role;
+        if( decodeToken.email === 'blogbrewofficial25@gmail.com' ){
+            decodeToken.role = 'Admin';
         }
 
         if(decodeToken.role === 'Admin'){
