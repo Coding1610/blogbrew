@@ -53,7 +53,7 @@ exports.AddComment = async (req, res, next) => {
           </blockquote>
     
           <div style="margin-top: 30px;">
-            <a href="http://localhost:5173/blog/${blog.category.slug}/${blog.slug}" style="display: inline-block; background-color: #3A59D1; color: #fff; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+            <a href="https://blogbrew.vercel.app/blog/${blog.category.slug}/${blog.slug}" style="display: inline-block; background-color: #3A59D1; color: #fff; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
               🔗 View Full Blog Post
             </a>
           </div>
