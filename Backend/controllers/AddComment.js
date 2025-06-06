@@ -14,7 +14,7 @@ exports.AddComment = async (req, res, next) => {
     // 4. Response
     res.status(200).json({
       success: true,
-      message: "Comment added successfully and email sent to author",
+      message: "Comment added Successfully",
       newComment
     });
 
