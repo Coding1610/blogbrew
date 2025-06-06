@@ -43,6 +43,10 @@
 - 🧩 See **Related Blogs** based on category or tags
 - 🔍 Search blogs by title or category
 
+### 💌 Mail
+
+- ✅ Mail sent to the blog's author from BlogBrew Official when someone likes or comments on their blog.
+- ✅ Mail sent to the author when they register successfully.
 ---
 
 ## 🛠 Tech Stack
