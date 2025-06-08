@@ -44,7 +44,7 @@ exports.Register = async (req, res, next) => {
             <p>✨ Start your journey by publishing your first blog post!</p>
 
             <div style="margin: 30px 0;">
-                <a href="http://localhost:5173/" style="background-color: #3A59D1; color: #fff; padding: 12px 20px; text-decoration: none; border-radius: 6px;">📝 Explore BlogBrew</a>
+                <a href="https://blogbrew.vercel.app/" style="background-color: #3A59D1; color: #fff; padding: 12px 20px; text-decoration: none; border-radius: 6px;">📝 Explore BlogBrew</a>
             </div>
 
             <hr style="border-top: 1px solid #ddd;" />
