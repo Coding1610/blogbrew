@@ -8,13 +8,17 @@ exports.AdminView = async(req,res,next) => {
         const token = req.cookies.cookie_name;
 
         if(!token){
-            return next(handleError(403,'Unathorized'));
+            return next(handleError(456,'Unathorized'));
         }
 
         const decodeToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-        if( decodeToken.email === 'blogbrewofficial25@gmail.com' ){
-            decodeToken.role = 'Admin';
+        const id = '68428b6fbf2fa988d8358673';
+       
+        const freshUser = await User.findById(id);
+        
+        if(freshUser.role !== decodeToken.role) {
+            decodeToken.role = freshUser.role;
         }
 
         if(decodeToken.role === 'Admin'){
