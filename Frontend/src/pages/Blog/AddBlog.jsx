@@ -12,7 +12,6 @@ import { showToast } from '@/helpers/showToast'
 import slugify from 'slugify'
 import { useFetch } from '@/hooks/useFtech'
 import Dropzone from 'react-dropzone'
-import CkEditor from '@/components/CkEditor'
 import { RouteSignIn } from '@/helpers/RouteName'
 import { 
     Select, 
@@ -26,6 +25,7 @@ import Loading from '@/components/Loading'
 import { useNavigate } from 'react-router-dom'
 import { RouteGetMyBlogs } from '@/helpers/RouteName'
 import { Link } from 'react-router-dom'
+import CkEditor from '@/components/CkEditor'
 
 export default function AddBlog() {
 
@@ -205,6 +205,7 @@ export default function AddBlog() {
                                         <FormLabel className="font-roboto text-[15px]">Blog Content</FormLabel>
                                         <FormControl>
                                             <CkEditor props={{initialData:'',onChange:handleEditorData}} />
+                                            {/* <NovelEditor/> */}
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

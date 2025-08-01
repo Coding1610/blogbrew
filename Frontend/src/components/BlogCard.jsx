@@ -16,7 +16,7 @@ export default function BlogCard({props}) {
         <>  
         <ReactParallaxTilt scale={0.95}>
             <Link to={RouteBlogDetails(props.category.slug, props.slug)}>
-            <Card className="font-roboto w-[350px] h-[400px] pt-5 cursor-pointer shadow-md hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+            <Card className="font-roboto border-gray-300 border-2 w-[350px] h-[400px] pt-5 cursor-pointer bg-gray-50 shadow-md hover:shadow-2xl transition-shadow duration-300 ease-in-out">
                 <CardContent>
                     <div className='flex items-center justify-between mb-5'>
                         <div className='flex justify-between items-center gap-3'>
