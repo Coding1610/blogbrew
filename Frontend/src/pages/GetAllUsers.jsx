@@ -77,7 +77,7 @@ export default function GetAllUsers() {
                                         </Avatar>
                                     </TableCell>
                                     <TableCell>{u?.createdAt ? moment(u?.createdAt).format('DD-MM-YYYY') : '_'}</TableCell>
-                                    <TableCell className="flex gap-2 items-center">
+                                    <TableCell className={u?.role ==="User" ? "flex gap-2 items-center" : "hidden"}>
                                         <Button onClick={() => handleDelete(u?._id)} className="rounded-full px-2.5 bg-white  border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
                                             <Link>
                                                 <Trash size={16}/>

@@ -48,8 +48,13 @@ export default function BlogDeatils(){
 
     return (
         <>
-        <div className='w-full pl-5 pr-5 pb-5 sm:pl-15 sm:pr-15 font-roboto'>
-            <Card className='border-none shadow-none'>
+        <div className='w-full pl-5 pr-5 pb-5 sm:pl-10 sm:pr-10 font-roboto mt-5'>
+            
+            {
+                user?.user?.role === 'User' 
+                ?
+                <> 
+                <Card className='border-none shadow-none'>
                 <CardHeader>
                     {user?.user?.role === 'User' 
                     ?
@@ -66,6 +71,13 @@ export default function BlogDeatils(){
                     </>
                     }
                 </CardHeader>
+            </Card>
+            </>
+            :
+            <>
+            </>
+            }
+                <h1 className="font-roboto font-bold text-2xl text-darkRed mb-5 border-b-darkRed border-b-2 w-max ml-5">All Blogs</h1>
                 <Card className="mx-4 px-2 pt-2">
                     <Table>
                         <TableHeader className="text-darkRed">
@@ -111,7 +123,6 @@ export default function BlogDeatils(){
                         </TableBody>
                     </Table>
                 </Card>
-            </Card>
         </div>
         </>
     )
