@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Card, CardContent } from '@/components/ui/card'
 import { ListPlus } from 'lucide-react'
-// import { useNavigate } from 'react-router-dom'
 import { getEnv } from '@/helpers/getEnv'
 import { showToast } from '@/helpers/showToast'
 import slugify from 'slugify'
